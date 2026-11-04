@@ -55,7 +55,15 @@
   }
 
   // ---------- windows ----------
+  // folders show as open while their window is open
+  function closeWindow(win) {
+    const el = els[win.dataset.id];
+    if (el) el.classList.remove("open");
+    win.remove();
+  }
+
   function openWindow(f) {
+    if (els[f.id]) els[f.id].classList.add("open");
     const existing = document.querySelector('.window[data-id="' + f.id + '"]');
     if (existing) { existing.style.zIndex = ++z; return; }
     const win = document.createElement("section");
@@ -79,7 +87,7 @@
     win.style.top = Math.max(70, (H - win.offsetHeight) / 2 - 30 + n * 24) + "px";
     win.style.zIndex = ++z;
     win.addEventListener("pointerdown", function () { win.style.zIndex = ++z; });
-    win.querySelector(".close").addEventListener("click", function () { win.remove(); });
+    win.querySelector(".close").addEventListener("click", function () { closeWindow(win); });
     win.querySelectorAll("figure button").forEach(function (b) {
       b.addEventListener("click", function () { lightbox(f.items[+b.dataset.i]); });
     });
@@ -114,7 +122,7 @@
     const lb = document.querySelector(".lightbox");
     if (lb) { lb.remove(); return; }
     const wins = Array.prototype.slice.call(document.querySelectorAll(".window"));
-    if (wins.length) wins.sort(function (a, b) { return +b.style.zIndex - +a.style.zIndex; })[0].remove();
+    if (wins.length) closeWindow(wins.sort(function (a, b) { return +b.style.zIndex - +a.style.zIndex; })[0]);
   });
 
   // ---------- desktop icons ----------
@@ -124,7 +132,7 @@
     el.className = "desk-item";
     el.setAttribute("role", "listitem");
     el.setAttribute("aria-label", "Open " + f.name);
-    el.innerHTML = '<span data-px="folder" data-scale="2"></span><span>' + f.name + "</span>";
+    el.innerHTML = '<span class="desk-icon"><span class="f-closed" data-px="folder" data-scale="2"></span><span class="f-open" data-px="folderOpen" data-scale="2"></span></span><span class="desk-label">' + f.name + "</span>";
     desk.appendChild(el);
     els[f.id] = el;
 

@@ -510,9 +510,15 @@ body.intro-running { overflow: hidden; }
   transition: left .6s var(--ease), top .6s var(--ease);
 }
 .desk-item.dragging { transition: none; z-index: 5; }
-.desk-item .px { transition: transform .2s var(--ease); }
-.desk-item:hover .px { transform: translateY(-2px); }
-.desk-item.selected span { background: var(--blue); color: #fff; border-radius: 3px; padding: 0 4px; }
+.desk-item { padding: 8px 4px 6px; border-radius: 10px; border: 1px solid transparent; transition: left .6s var(--ease), top .6s var(--ease), border-color .2s, background .2s; }
+.desk-icon { display: inline-grid; transition: transform .2s var(--ease); }
+.desk-icon > .px { grid-area: 1 / 1; align-self: end; justify-self: center; }
+.desk-icon .f-open { opacity: 0; }
+.desk-item.open .desk-icon .f-open { opacity: 1; }
+.desk-item.open .desk-icon .f-closed { opacity: 0; }
+.desk-item:hover .desk-icon { transform: translateY(-2px); }
+.desk-item.selected { border-color: #d9d9d9; background: rgba(255,255,255,.55); }
+.desk-item.selected .desk-label { color: var(--ink); }
 .organize {
   position: fixed; top: 38px; right: 38px; z-index: 10;
   width: 44px; height: 44px; border-radius: 10px; background: #fff;
