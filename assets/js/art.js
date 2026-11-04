@@ -151,6 +151,9 @@
       if (!moved) openWindow(f);
     });
     el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openWindow(f); } });
+    // forwarded clicks (a tap while the pen or eraser is active) open it too;
+    // openWindow just raises the window if it is already open
+    el.addEventListener("click", function () { if (!moved) openWindow(f); });
   });
 
   document.getElementById("organize").addEventListener("click", organize);

@@ -154,31 +154,48 @@
     return pageLayer;
   }
 
-  // a pen/eraser button sitting under the ink (like the ones beside the
-  // name) should still switch tools instead of being drawn over
-  function toolUnder(e) {
-    const els = document.elementsFromPoint ? document.elementsFromPoint(e.clientX, e.clientY) : [];
+  // Icons, links and buttons stay clickable while a tool is active.
+  // Small interactive things under the pointer win over the ink; big ones
+  // (a whole project card or a large tile) stay drawable.
+  const CLICKABLE = 'a[href], button, [role="button"], input, select, textarea, label, summary, [data-cursor]';
+  const MAX_AREA = 40000;   // px²; roughly a 200×200 box
+  function clickableAt(x, y) {
+    const els = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
     for (let i = 0; i < els.length; i++) {
-      if (els[i].classList && els[i].classList.contains("ink")) continue;
-      const b = els[i].closest && els[i].closest("[data-cursor]");
-      if (b) return b;
+      const el = els[i];
+      if (el.classList && el.classList.contains("ink")) continue;
+      const c = el.closest && el.closest(CLICKABLE);
+      if (!c) return null;
+      const r = c.getBoundingClientRect();
+      return (r.width * r.height <= MAX_AREA || c.hasAttribute("data-cursor")) ? c : null;
     }
     return null;
   }
 
+  // mouse / stylus: when hovering something clickable, let the pointer fall
+  // through the ink so the real element gets the hover and the click
+  let passThrough = false;
+  function setPass(on) {
+    if (on === passThrough) return;
+    passThrough = on;
+    if (on) input.style.pointerEvents = "none"; else input.style.removeProperty("pointer-events");
+  }
+  window.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "touch" || active || erasing) return;
+    if (!(window.CTTool && window.CTTool.get())) { setPass(false); return; }
+    setPass(!!clickableAt(e.clientX, e.clientY));
+  }, { passive: true, capture: true });
+  document.addEventListener("ct-tool", function (e) { if (!e.detail) setPass(false); });
+
   // ---------- input ----------
   let active = null, layer = null, last = null, erasing = false, dirty = false;
-  input.addEventListener("pointermove", function (e) {
-    if (active || erasing) return;
-    if (toolUnder(e)) input.style.setProperty("cursor", "pointer", "important");
-    else input.style.removeProperty("cursor");
-  });
+  let tap = null;   // touch: a tap on something clickable is forwarded to it
   input.addEventListener("pointerdown", function (e) {
     const tool = window.CTTool && window.CTTool.get();
     if (!tool || (e.button !== undefined && e.button !== 0)) return;
     e.preventDefault();
-    const btn = toolUnder(e);
-    if (btn) { window.CTTool.set(btn.getAttribute("data-cursor")); return; }
+    const c = clickableAt(e.clientX, e.clientY);
+    if (c) { tap = { el: c, x: e.clientX, y: e.clientY }; return; }
     input.setPointerCapture(e.pointerId);
     resizeAll();
     layer = layerAt(e);
@@ -210,7 +227,15 @@
       last = p;
     });
   });
-  function end() {
+  function end(e) {
+    if (tap && e && e.type === "pointerup" && Math.hypot(e.clientX - tap.x, e.clientY - tap.y) < 10) {
+      const el = tap.el;
+      tap = null;
+      if (el.focus) el.focus({ preventScroll: true });
+      el.click();
+      return;
+    }
+    tap = null;
     if (layer && (active || dirty)) save(layer);
     active = null; erasing = false; dirty = false;
   }
