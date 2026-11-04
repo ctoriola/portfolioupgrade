@@ -347,7 +347,6 @@
   // =========================================================
   function physics() {
     if (reduce) return;
-    const fine = window.matchMedia("(pointer: fine)").matches;
     const hero = document.querySelector(".hero");
     const copy = document.querySelector(".hero-copy");
     const figImg = document.querySelector(".hero-figure img");
@@ -359,24 +358,58 @@
     // spring state (offset in px and its velocity)
     let off = 0, offV = 0;
 
-    if (fine) {
-      window.addEventListener("wheel", function (e) {
-        if (e.ctrlKey || document.body.classList.contains("intro-running")) return;
-        e.preventDefault();
-        const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
-        if (!wheeling) { target = current = window.scrollY; }
-        target = Math.min(maxY(), Math.max(0, target + d));
-        wheeling = true;
-      }, { passive: false });
-      // keyboard, scrollbar or anchor jumps: hand control back to native scroll
-      ["keydown", "mousedown", "touchstart"].forEach(function (ev) {
-        window.addEventListener(ev, function () { wheeling = false; }, { passive: true });
-      });
-    }
+    let ease = 0.075;                                   // lower = heavier
+    const busy = function () { return document.body.classList.contains("intro-running"); };
+    const clampY = function (v) { return Math.min(maxY(), Math.max(0, v)); };
+
+    // mouse wheel / trackpad
+    window.addEventListener("wheel", function (e) {
+      if (e.ctrlKey || busy()) return;
+      e.preventDefault();
+      const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+      if (!wheeling) { target = current = window.scrollY; }
+      target = clampY(target + d);
+      ease = 0.075;
+      wheeling = true;
+    }, { passive: false });
+
+    // touch: the page follows the finger with a little lag, then a
+    // flick carries on as momentum and glides to a stop
+    let touchY = 0, touchT = 0, flick = 0, tracking = false;
+    window.addEventListener("touchstart", function (e) {
+      if (busy() || e.touches.length > 1) { tracking = false; return; }
+      tracking = true;
+      touchY = e.touches[0].clientY; touchT = performance.now(); flick = 0;
+      target = current = window.scrollY;
+    }, { passive: true });
+    window.addEventListener("touchmove", function (e) {
+      if (!tracking || e.touches.length > 1) return;
+      e.preventDefault();
+      const y = e.touches[0].clientY, now = performance.now();
+      const dy = touchY - y, dt = Math.max(1, now - touchT);
+      touchY = y; touchT = now;
+      flick = flick * 0.6 + (dy / dt) * 0.4;           // smoothed px per ms
+      target = clampY(target + dy);
+      ease = 0.2;
+      wheeling = true;
+    }, { passive: false });
+    window.addEventListener("touchend", function () {
+      if (!tracking) return;
+      tracking = false;
+      if (performance.now() - touchT > 90) flick = 0;   // finger rested before lifting
+      target = clampY(target + flick * 520);
+      ease = 0.06;
+      wheeling = true;
+    }, { passive: true });
+
+    // keyboard, scrollbar or anchor jumps: hand control back to native scroll
+    ["keydown", "mousedown"].forEach(function (ev) {
+      window.addEventListener(ev, function () { wheeling = false; }, { passive: true });
+    });
 
     function tick() {
       if (wheeling) {
-        current += (target - current) * 0.075;          // lower = heavier
+        current += (target - current) * ease;
         if (Math.abs(target - current) < 0.4) { current = target; wheeling = false; }
         window.scrollTo(0, current);
       }
