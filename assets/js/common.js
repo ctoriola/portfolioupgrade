@@ -21,6 +21,24 @@
       "#oooooooooooooooooooo#",
       ".####################.",
     ],
+    folderFull: [
+      "........###########...",
+      "........#ooooooooo#...",
+      "........#oo###########",
+      ".######.#oo#ooooooooo#",
+      "#oooooo##oo#ooooooooo#",
+      "######################",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      "#oooooooooooooooooooo#",
+      ".####################.",
+    ],
     folderOpen: [
       ".######...............",
       "#oooooo#..............",
@@ -311,7 +329,7 @@
       '<div class="dock-left">' +
         '<button class="dock-home" type="button" aria-expanded="true" aria-controls="dock-links" aria-label="Hide menu">' +
           '<span class="f-open" data-px="folderOpen" data-scale="2"></span>' +
-          '<span class="f-closed" data-px="folder" data-scale="2"></span>' +
+          '<span class="f-closed" data-px="folderFull" data-scale="2"></span>' +
         "</button>" +
         '<div class="dock-links" id="dock-links">' +
           links.map(function (l) {
