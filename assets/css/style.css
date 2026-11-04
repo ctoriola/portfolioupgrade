@@ -114,8 +114,30 @@ body.drawing .ink-bar { transform: translate(-50%, 0); opacity: 1; }
 }
 .dock > * { pointer-events: auto; }
 .dock-left { display: flex; align-items: center; gap: 26px; }
-.dock-home { display: inline-flex; transition: transform .25s var(--ease); }
+.dock-home { position: relative; display: inline-grid; transition: transform .25s var(--ease); }
+.dock-home > .px { grid-area: 1 / 1; transition: opacity .18s ease; }
+.dock-home .f-closed { opacity: 0; }
+.dock.collapsed .dock-home .f-open { opacity: 0; transition-delay: .2s; }
+.dock.collapsed .dock-home .f-closed { opacity: 1; transition-delay: .2s; }
 .dock-home:hover { transform: translateY(-2px) rotate(-4deg); }
+.dock-home.gulp { animation: gulp .55s var(--ease); }
+@keyframes gulp {
+  0% { transform: none; }
+  40% { transform: scale(1.16, .86) translateY(2px); }
+  70% { transform: scale(.94, 1.06) translateY(-2px); }
+  100% { transform: none; }
+}
+/* links fly into / out of the folder */
+.dock-links a {
+  display: inline-block;
+  transition: color .2s, transform .42s var(--ease) var(--d-out, 0ms), opacity .3s ease var(--d-out, 0ms);
+}
+.dock.collapsed .dock-links a {
+  transform: translateX(var(--dx, -60px)) scale(.2);
+  opacity: 0; pointer-events: none;
+  transition: color .2s, transform .38s cubic-bezier(.6, 0, .9, .4) var(--d-in, 0ms), opacity .25s ease calc(var(--d-in, 0ms) + 120ms);
+}
+.dock.no-anim .dock-links a, .dock.no-anim .dock-home > .px { transition: none !important; }
 .dock-links { display: flex; gap: 22px; font-size: 17px; letter-spacing: -.01em; }
 .dock-links a { color: var(--muted); transition: color .2s; }
 .dock-links a:hover { color: var(--ink-2); }
@@ -701,5 +723,5 @@ body.intro-running { overflow: hidden; }
 
 @media (hover: none) {
   .pick .pick-tip { display: none; }
-  .pick:hover { transform: none; }
+  .pick:hover, .dock-home:hover, .dock-tool:hover { transform: none; }
 }

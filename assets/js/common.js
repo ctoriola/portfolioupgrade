@@ -309,8 +309,11 @@
     nav.setAttribute("aria-label", "Primary");
     nav.innerHTML =
       '<div class="dock-left">' +
-        '<a class="dock-home" href="/" aria-label="Home"><span data-px="folderOpen" data-scale="2"></span></a>' +
-        '<div class="dock-links">' +
+        '<button class="dock-home" type="button" aria-expanded="true" aria-controls="dock-links" aria-label="Hide menu">' +
+          '<span class="f-open" data-px="folderOpen" data-scale="2"></span>' +
+          '<span class="f-closed" data-px="folder" data-scale="2"></span>' +
+        "</button>" +
+        '<div class="dock-links" id="dock-links">' +
           links.map(function (l) {
             return '<a href="' + l[1] + '"' + (l[0] === page ? ' aria-current="page"' : "") + ">" + l[0] + "</a>";
           }).join("") +
@@ -328,6 +331,47 @@
     fade.className = "dock-fade";
     document.body.appendChild(fade);
     document.body.appendChild(nav);
+    setupFolder(nav);
+  }
+
+  // The open folder collapses the nav links into itself (and becomes a
+  // closed folder); clicking it again lets them back out. Remembered.
+  function setupFolder(nav) {
+    const btn = nav.querySelector(".dock-home");
+    const wrap = nav.querySelector(".dock-links");
+    const items = Array.prototype.slice.call(wrap.querySelectorAll("a"));
+    function aim() {
+      // distance from each link back to the folder's mouth
+      const f = btn.getBoundingClientRect();
+      const fx = f.left + f.width * 0.55;
+      items.forEach(function (a, i) {
+        const r = a.getBoundingClientRect();
+        a.style.setProperty("--dx", (fx - (r.left + r.width / 2)).toFixed(1) + "px");
+        a.style.setProperty("--d-in", ((items.length - 1 - i) * 45) + "ms");
+        a.style.setProperty("--d-out", (i * 55) + "ms");
+      });
+    }
+    function set(closed, animate) {
+      if (closed) aim();
+      nav.classList.toggle("no-anim", !animate);
+      nav.classList.toggle("collapsed", closed);
+      btn.setAttribute("aria-expanded", String(!closed));
+      btn.setAttribute("aria-label", closed ? "Show menu" : "Hide menu");
+      items.forEach(function (a) { a.tabIndex = closed ? -1 : 0; });
+      if (animate) {
+        btn.classList.remove("gulp"); void btn.offsetWidth; btn.classList.add("gulp");
+      }
+      try { localStorage.setItem("ct-nav", closed ? "closed" : "open"); } catch (e) {}
+    }
+    let start = false;
+    try { start = localStorage.getItem("ct-nav") === "closed"; } catch (e) {}
+    // apply the saved state straight away (no animation, no flash), then
+    // re-aim once fonts have settled
+    set(start, false);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { nav.classList.remove("no-anim"); }); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (nav.classList.contains("collapsed")) aim(); });
+    btn.addEventListener("click", function () { set(!nav.classList.contains("collapsed"), true); });
+    window.addEventListener("resize", function () { if (nav.classList.contains("collapsed")) aim(); });
   }
 
   // ---------- pen / eraser tools ("click to use") ----------

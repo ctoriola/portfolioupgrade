@@ -154,20 +154,16 @@
     return pageLayer;
   }
 
-  // Icons, links and buttons stay clickable while a tool is active.
-  // Small interactive things under the pointer win over the ink; big ones
-  // (a whole project card or a large tile) stay drawable.
+  // Icons, links, buttons and whole project cards stay clickable while a
+  // tool is active: anything interactive under the pointer wins over the ink.
   const CLICKABLE = 'a[href], button, [role="button"], input, select, textarea, label, summary, [data-cursor]';
-  const MAX_AREA = 40000;   // px²; roughly a 200×200 box
   function clickableAt(x, y) {
     const els = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
     for (let i = 0; i < els.length; i++) {
       const el = els[i];
       if (el.classList && el.classList.contains("ink")) continue;
       const c = el.closest && el.closest(CLICKABLE);
-      if (!c) return null;
-      const r = c.getBoundingClientRect();
-      return (r.width * r.height <= MAX_AREA || c.hasAttribute("data-cursor")) ? c : null;
+      return c || null;
     }
     return null;
   }
