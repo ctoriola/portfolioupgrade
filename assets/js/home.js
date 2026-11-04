@@ -140,7 +140,7 @@
     const counter = el.querySelector("[data-slide]");
     const briefEl = el.querySelector("[data-brief]");
     const titles = ["The problem", "Our solution", "Market size", "Product", "How it works", "Traction", "Business model", "Competition", "Go-to-market", "Team", "Financials", "The ask", "Thank you"];
-    const briefs = ["brief: queue app for clinics in Abuja", "repo: github.com/ctoriola/orderly", "docs: school_admin_overview.pdf"];
+    const briefs = ["brief: queue app for clinics in Abuja", "repo: github.com/ctoriola/taxapp", "docs: school_admin_overview.pdf"];
     let i = 0, timer = 0, typer = 0, bi = 0;
 
     function deal() {
@@ -214,38 +214,84 @@
       function () { running = false; clearTimeout(to); clearInterval(iv); });
   }
 
-  // 03 · Orderly — QR code + live queue
-  function sceneOrderly(el) {
-    const qr = el.querySelector("[data-qr]");
-    const numEl = el.querySelector("[data-num]");
-    const queue = el.querySelector("[data-queue]");
-    // deterministic pseudo-QR with three finder patterns
-    const N = 25; let seed = 7;
-    const rnd = function () { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
-    let rects = "";
-    const finder = function (x, y) {
-      rects += '<rect x="' + x + '" y="' + y + '" width="7" height="7" fill="#000"/><rect x="' + (x + 1) + '" y="' + (y + 1) + '" width="5" height="5" fill="#fff"/><rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="3" height="3" fill="#000"/>';
-    };
-    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
-      const inF = (x < 8 && y < 8) || (x > N - 9 && y < 8) || (x < 8 && y > N - 9);
-      if (!inF && rnd() > 0.52) rects += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="#000"/>';
+  // 02 · VATClear — VAT due counts up, monthly bars grow, activity feed ticks
+  function sceneVat(el) {
+    const amtEl = el.querySelector("[data-amt]");
+    const bars = el.querySelector("[data-bars]");
+    const feed = el.querySelector("[data-feed]");
+    const months = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+    const vals = [52, 64, 47, 78, 70, 92];
+    bars.innerHTML = months.map(function (m, i) {
+      return '<div class="vat-bar"><i style="--h:' + vals[i] + '%"></i><span>' + m + "</span></div>";
+    }).join("");
+    const events = [
+      ["Invoice INV-0142 paid", "+₦430,000.00"],
+      ["Expense · Diesel", "−₦85,000.00"],
+      ["Invoice INV-0143 sent", "₦1,250,000.00"],
+      ["Expense · Internet", "−₦32,250.00"],
+      ["Payment received", "+₦612,500.00"],
+    ];
+    const target = 86250, fmt = new Intl.NumberFormat("en-NG", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    let ei = 0, timer = 0, raf = 0;
+    function count() {
+      const t0 = performance.now();
+      cancelAnimationFrame(raf);
+      (function step(now) {
+        const k = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - k, 3);
+        amtEl.textContent = "₦" + fmt.format(target * e);
+        if (k < 1) raf = requestAnimationFrame(step);
+      })(t0);
     }
-    finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
-    qr.innerHTML = '<svg viewBox="0 0 ' + N + " " + N + '" aria-hidden="true">' + rects + "</svg>";
-
-    let n = 41, timer = 0;
-    function render() {
-      numEl.textContent = pad(n, 3);
-      queue.innerHTML = [1, 2, 3].map(function (k) {
-        return "<li><span>Ticket " + pad(n + k, 3) + "</span><span>~" + k * 2 + " min</span></li>";
-      }).join("");
+    function push() {
+      const ev = events[ei++ % events.length];
+      const row = document.createElement("div");
+      row.className = "vat-row";
+      row.innerHTML = "<span>" + ev[0] + "</span><b class='" + (ev[1][0] === "−" ? "neg" : "") + "'>" + ev[1] + "</b>";
+      feed.prepend(row);
+      while (feed.children.length > 2) feed.lastChild.remove();
     }
-    render();
-    if (reduce) return;
+    push(); push();
+    if (reduce) { amtEl.textContent = "₦" + fmt.format(target); el.classList.add("on"); return; }
     whenVisible(el, function () {
       if (timer) return;
-      timer = setInterval(function () { n = n >= 99 ? 41 : n + 1; render(); }, 2200);
+      el.classList.remove("on"); void el.offsetWidth; el.classList.add("on");
+      count();
+      timer = setInterval(push, 2400);
     }, function () { clearInterval(timer); timer = 0; });
+  }
+
+  // 03 · Lyrics → EasyWorship — doc lines become labelled slides
+  function sceneEw(el) {
+    const doc = el.querySelector("[data-doc]");
+    const label = el.querySelector("[data-label]");
+    const lines = el.querySelector("[data-lines]");
+    const step = el.querySelector("[data-step]");
+    // "Amazing Grace" (John Newton, 1779) is in the public domain.
+    const slides = [
+      ["Title", "Praise &amp; Worship"],
+      ["Verse 1", "Amazing grace, how sweet the sound<br>That saved a wretch like me"],
+      ["Verse 1", "I once was lost, but now am found<br>Was blind, but now I see"],
+      ["Verse 2", "'Twas grace that taught my heart to fear<br>And grace my fears relieved"],
+      ["Verse 2", "How precious did that grace appear<br>The hour I first believed"],
+    ];
+    const steps = ["AI clean-up", "labelling", "AI check", "building .ewsx"];
+    doc.innerHTML = ["PRAISE &amp; WORSHIP", "amazing grace", "Amazing grace how sweet the sound that saved a wretch like me", "I once was lost but now am found, was blind but now I see", "verse 2 — 'twas grace that taught...", "how precious did that grace appear"]
+      .map(function (t, i) { return '<div class="ew-line" data-i="' + i + '">' + t + "</div>"; }).join("");
+    const docLines = doc.querySelectorAll(".ew-line");
+    let i = 0, timer = 0;
+    function show() {
+      const s = slides[i];
+      label.textContent = s[0];
+      lines.innerHTML = s[1];
+      lines.classList.remove("in"); void lines.offsetWidth; lines.classList.add("in");
+      step.textContent = steps[i % steps.length];
+      docLines.forEach(function (d, k) { d.classList.toggle("hot", k === Math.min(i + 1, docLines.length - 1) || (i === 0 && k === 0)); });
+      i = (i + 1) % slides.length;
+    }
+    show();
+    if (reduce) return;
+    whenVisible(el, function () { if (!timer) timer = setInterval(show, 1900); },
+      function () { clearInterval(timer); timer = 0; });
   }
 
   // 04 · School management — rolling result sheet
@@ -262,7 +308,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     intro();
-    const map = { ppa: scenePPA, ncrypt: sceneNcrypt, orderly: sceneOrderly, school: sceneSchool };
+    const map = { ppa: scenePPA, ncrypt: sceneNcrypt, vat: sceneVat, ew: sceneEw, school: sceneSchool };
     document.querySelectorAll("[data-scene]").forEach(function (el) {
       const fn = map[el.getAttribute("data-scene")];
       if (fn) fn(el);
