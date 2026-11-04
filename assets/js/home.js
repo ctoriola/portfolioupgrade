@@ -377,7 +377,7 @@
     // flick carries on as momentum and glides to a stop
     let touchY = 0, touchT = 0, flick = 0, tracking = false;
     window.addEventListener("touchstart", function (e) {
-      if (busy() || e.touches.length > 1) { tracking = false; return; }
+      if (busy() || e.touches.length > 1 || document.body.classList.contains("drawing")) { tracking = false; return; }
       tracking = true;
       touchY = e.touches[0].clientY; touchT = performance.now(); flick = 0;
       target = current = window.scrollY;

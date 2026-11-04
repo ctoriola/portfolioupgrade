@@ -91,6 +91,39 @@
       ".#w##...........",
       ".##.............",
     ],
+    eraser: [
+      ".......######...",
+      "......#bbbbbb#..",
+      ".....#bbbbbbbb#.",
+      "....#bbbbbbbb#..",
+      "...#wwwwbbbb#...",
+      "..#wwwwwwbb#....",
+      ".#wwwwwwww#.....",
+      "#wwwwwwww#......",
+      "#wwwwwww#.......",
+      ".#wwwww#........",
+      "..#####.........",
+    ],
+    trash: [
+      "....####....",
+      "############",
+      ".#oooooooo#.",
+      ".#o#oo#o#o#.",
+      ".#o#oo#o#o#.",
+      ".#o#oo#o#o#.",
+      ".#o#oo#o#o#.",
+      ".#oooooooo#.",
+      "..########..",
+    ],
+    close: [
+      "##.....##",
+      ".##...##.",
+      "..##.##..",
+      "...###...",
+      "..##.##..",
+      ".##...##.",
+      "##.....##",
+    ],
     mail: [
       "##################",
       "#oooooooooooooooo#",
@@ -293,28 +326,34 @@
     document.body.appendChild(nav);
   }
 
-  // ---------- custom cursors ("click to use") ----------
+  // ---------- pen / eraser tools ("click to use") ----------
+  // The tool is not remembered between page loads, so a fresh page never
+  // opens with its links blocked by drawing mode. The drawings themselves
+  // are saved by draw.js.
+  const TOOLS = ["pen", "eraser"];
+  let tool = null;
+  function setTool(next) {
+    if (next === tool) next = null;
+    tool = next;
+    TOOLS.forEach(function (t) { document.body.classList.toggle("cursor-" + t, tool === t); });
+    document.body.classList.toggle("drawing", !!tool);
+    document.querySelectorAll("[data-cursor]").forEach(function (b) {
+      const on = b.getAttribute("data-cursor") === tool;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+    document.dispatchEvent(new CustomEvent("ct-tool", { detail: tool }));
+  }
   function setupCursors() {
     const root = document.documentElement;
-    root.style.setProperty("--cursor-hand", 'url("' + iconToDataURL("hand", 2, { w: "#fff" }) + '") 10 2');
+    root.style.setProperty("--cursor-eraser", 'url("' + iconToDataURL("eraser", 2, { w: "#fff" }) + '") 2 20');
     root.style.setProperty("--cursor-pen", 'url("' + iconToDataURL("pen", 2, { w: "#fff" }) + '") 2 26');
-    let saved = null;
-    try { saved = localStorage.getItem("ct-cursor"); } catch (e) {}
-    if (saved === "hand" || saved === "pen") document.body.classList.add("cursor-" + saved);
+    try { localStorage.removeItem("ct-cursor"); } catch (e) {}   // old setting
     document.querySelectorAll("[data-cursor]").forEach(function (btn) {
-      const kind = btn.getAttribute("data-cursor");
-      if (document.body.classList.contains("cursor-" + kind)) btn.classList.add("on");
-      btn.addEventListener("click", function () {
-        const on = document.body.classList.contains("cursor-" + kind);
-        document.body.classList.remove("cursor-hand", "cursor-pen");
-        document.querySelectorAll("[data-cursor]").forEach(function (b) { b.classList.remove("on"); });
-        let next = null;
-        if (!on) { document.body.classList.add("cursor-" + kind); btn.classList.add("on"); next = kind; }
-        btn.setAttribute("aria-pressed", String(!on));
-        try { next ? localStorage.setItem("ct-cursor", next) : localStorage.removeItem("ct-cursor"); } catch (e) {}
-      });
+      btn.addEventListener("click", function (e) { e.stopPropagation(); setTool(btn.getAttribute("data-cursor")); });
     });
   }
+  window.CTTool = { set: setTool, get: function () { return tool; } };
 
   // ---------- Abuja clock ----------
   function setupClock() {
