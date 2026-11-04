@@ -530,6 +530,12 @@ body.intro-running { overflow: hidden; }
   transition: opacity .5s; pointer-events: none;
 }
 .sticker-hint.gone { opacity: 0; }
+.sticker-reset {
+  position: absolute; left: 66px; top: 590px; z-index: 1;
+  font-family: var(--f-pixel); font-size: 10px; color: var(--blue);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.sticker-reset[hidden] { display: none; }
 .about-copy { padding-top: 112px; max-width: 440px; }
 .about-copy h1 { font-family: var(--f-serif); font-weight: 400; font-size: 33px; letter-spacing: -.02em; margin: 0 0 26px; }
 .about-copy p, .about-copy li { font-size: 15.5px; line-height: 1.62; color: var(--muted); }
@@ -568,7 +574,7 @@ body.intro-running { overflow: hidden; }
   .about { grid-template-columns: 1fr; gap: 20px; padding-top: 120px; }
   .about-photos .stick { position: relative; top: 0; height: 520px; max-width: 380px; margin: 0 auto; }
   .polaroid.a { left: 40px; }
-  .sticker-hint { left: 44px; top: 560px; }
+  .sticker-hint, .sticker-reset { left: 44px; top: 560px; }
   .about-copy { padding-top: 0; margin: 0 auto; }
 }
 
@@ -642,7 +648,7 @@ body.intro-running { overflow: hidden; }
   .polaroid.a { width: 220px; height: 220px; left: 30px; }
   .polaroid.b { width: 120px; height: 160px; left: 20px; top: 260px; }
   .polaroid.c { width: 136px; height: 146px; left: 140px; top: 280px; }
-  .sticker-hint { left: 24px; top: 452px; }
+  .sticker-hint, .sticker-reset { left: 24px; top: 452px; }
   .about-copy h1 { font-size: 29px; }
   .about-copy h2 { margin-top: 50px; }
 }
