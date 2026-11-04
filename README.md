@@ -20,7 +20,11 @@ Deploy: push to Vercel (static, `vercel.json` enables clean URLs like `/fun`).
 Structure
 
 - `assets/css/style.css`: all styles
-- `assets/js/common.js`: pixel-art icon renderer, bottom dock, custom cursors, clock
+- `assets/js/common.js`: pixel-art icon renderer, bottom dock, pen/eraser tool state, clock
+- `assets/js/draw.js`: pixel ink layers (draw, erase, save)
+- `assets/js/stickers.js`: draggable sticker photos on About
+
+When you change a CSS or JS file, bump the `?v=` number on its `<link>`/`<script>` tags so browsers fetch the new copy.
 - `assets/js/home.js`: intro animation and project card scenes
 - `assets/js/art.js`: desktop folders, windows, lightbox
 - `assets/img/`: portraits, posters, site screenshots, blue duotone hero cutout

@@ -331,8 +331,8 @@
   }
 
   // ---------- pen / eraser tools ("click to use") ----------
-  // The chosen tool follows the visitor from page to page for the rest of
-  // the visit (sessionStorage). The bottom dock and the drawing toolbar sit
+  // The chosen tool follows the visitor from page to page (localStorage,
+  // forgotten after two hours idle so a later visit starts fresh). The bottom dock and the drawing toolbar sit
   // above the ink, so navigation and "Done" always stay clickable.
   const TOOLS = ["pen", "eraser"];
   let tool = null;
@@ -346,7 +346,10 @@
       b.classList.toggle("on", on);
       b.setAttribute("aria-pressed", String(on));
     });
-    try { tool ? sessionStorage.setItem("ct-tool", tool) : sessionStorage.removeItem("ct-tool"); } catch (e) {}
+    try {
+      tool ? localStorage.setItem("ct-tool", JSON.stringify({ tool: tool, t: Date.now() }))
+           : localStorage.removeItem("ct-tool");
+    } catch (e) {}
     document.dispatchEvent(new CustomEvent("ct-tool", { detail: tool }));
   }
   function setupCursors() {
@@ -358,7 +361,11 @@
       btn.addEventListener("click", function (e) { e.stopPropagation(); setTool(btn.getAttribute("data-cursor")); });
     });
     let keep = null;
-    try { keep = sessionStorage.getItem("ct-tool"); } catch (e) {}
+    try {
+      const raw = JSON.parse(localStorage.getItem("ct-tool") || "null");
+      if (raw && Date.now() - raw.t < 2 * 60 * 60 * 1000) keep = raw.tool;
+      sessionStorage.removeItem("ct-tool");           // older builds kept it here
+    } catch (e) {}
     if (TOOLS.indexOf(keep) !== -1) setTool(keep);
   }
   window.CTTool = { set: setTool, get: function () { return tool; } };
