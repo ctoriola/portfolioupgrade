@@ -71,10 +71,12 @@
     const N = mobile ? 70 : 120;
     const birds = [];
     for (let i = 0; i < N; i++) {
+      const vx0 = (mobile ? 2.6 : 4.2) + Math.random() * 2.2;
       birds.push({
+        v0: vx0,
         x: -Math.random() * W * 0.9 - 30,
         y: H * (0.08 + Math.random() * (mobile ? 0.45 : 0.42)),
-        vx: (mobile ? 2.6 : 4.2) + Math.random() * 2.2,
+        vx: vx0,
         vy: (Math.random() - 0.5) * 0.6,
         ph: Math.random() * Math.PI * 2,
         delay: 0.9 + Math.random() * 1.3,
@@ -83,15 +85,17 @@
       });
     }
 
-    // the real cursor is a rock in the stream: pointers part around it
-    // and close up again behind it (mouse / trackpad only)
+    // The real cursor is a rock in the stream: pointers part around it and
+    // close up again behind it. On touch screens the rock sits wherever the
+    // visitor taps (and follows a dragging finger), staying put after lift.
     const mouse = { x: -9999, y: -9999, on: false };
-    const R = 120;                                      // radius of influence
+    const R = W < 760 ? 140 : 180;                      // radius of influence
     function onMove(e) {
-      if (e.pointerType && e.pointerType !== "mouse" && e.pointerType !== "pen") return;
+      if (e.pointerType === "touch" && e.buttons === 0 && e.type === "pointermove") return;
       mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true;
     }
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onMove, { passive: true });
     document.documentElement.addEventListener("mouseleave", function () { mouse.on = false; });
     function avoid(b, dt) {
       if (!mouse.on) return;
@@ -101,15 +105,15 @@
       if (d2 > R * R) return;
       const d = Math.sqrt(d2) || 1;
       const f = 1 - d / R, f2 = f * f;
-      // straight out from the cursor...
-      b.x += (dx / d) * f2 * 10 * dt;
-      b.y += (dy / d) * f2 * 10 * dt;
-      // ...and swept sideways around it, on whichever side it is already on
+      // shoved straight out from the rock...
+      b.x += (dx / d) * (f2 * 34 + f * 6) * dt;
+      b.y += (dy / d) * (f2 * 34 + f * 6) * dt;
+      // ...and swept hard around it, on whichever side it is already on
       const v = Math.hypot(b.vx, b.vy) || 1;
       const nx = -b.vy / v, ny = b.vx / v;
       const side = (dx * nx + dy * ny) >= 0 ? 1 : -1;
-      b.vx += nx * side * f * 0.9 * dt;
-      b.vy += ny * side * f * 0.9 * dt;
+      b.vx += nx * side * f * 2.6 * dt;
+      b.vy += ny * side * f * 2.6 * dt;
     }
 
     const t0 = performance.now();
@@ -129,7 +133,8 @@
           // cruise right in a loose, wavy flock
           b.vy += Math.sin(t * 2.2 + b.ph) * 0.03 * dt;
           avoid(b, dt);
-          b.vy *= Math.pow(0.985, dt);                  // settle back into the flow
+          b.vy *= Math.pow(0.97, dt);                   // settle back into the flow
+          b.vx += (b.v0 - b.vx) * 0.05 * dt;
           b.x += b.vx * dt; b.y += b.vy * dt;
         } else {
           // home in on the phone screen
@@ -151,6 +156,7 @@
       }
       if ((alive === 0 && t > 1.5) || t > 5.2) {
         window.removeEventListener("pointermove", onMove);
+        window.removeEventListener("pointerdown", onMove);
         finish(); return;
       }
       raf = requestAnimationFrame(frame);
