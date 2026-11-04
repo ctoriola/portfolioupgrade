@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Charles Toriola</title>
+<meta name="description" content="Computer Science grad, former PHP developer, now Creative Lead at PrimeTEK Group in Abuja. Still ships software, still opens After Effects on weekends.">
+<meta name="theme-color" content="#f1f1f1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:image" content="https://charlestoriola.com/assets/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body data-page="about" class="about-page">
+
+<main class="about">
+  <div class="about-photos">
+    <div class="stick">
+      <figure class="polaroid a"><img src="/assets/img/photos/charles-studio.webp" alt="Studio portrait of Charles Toriola"></figure>
+      <figure class="polaroid b"><img src="/assets/img/photos/charles-park.webp" alt="Charles in a park in Abuja, looking at his phone" loading="lazy"></figure>
+      <figure class="polaroid c"><img src="/assets/img/photos/charles-palms.webp" alt="Charles in front of palm leaves" loading="lazy"></figure>
+    </div>
+  </div>
+
+  <article class="about-copy">
+    <h1>Hi i'm, Charles Toriola.</h1>
+    <p>I'm an <span class="hl">Abuja</span>-based <span class="hl">full stack developer</span> and <span class="hl">creative lead</span>. I don't just build what works; I shape what people <span class="hl">see, feel, and interact with.</span></p>
+
+    <h2>My Journey:</h2>
+    <p><span class="hl">Computer Science</span> grad and former <span class="hl">PHP developer</span>. My first taste of software people depend on daily was a school management system at <span class="hl">Wepluz</span>, now running in 100+ schools.</p>
+    <p>Today I'm <span class="hl">Creative Lead at PrimeTEK Group</span>, running brand and production for five companies. I lead a two-person creative team and run twice-weekly livestreams on an ATEM switcher. I still ship software (<a class="link" href="https://dev.charlestoriola.com/pitchperfectai.html" target="_blank" rel="noopener">PitchPerfectAI<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a>, <a class="link" href="https://dev.charlestoriola.com/ncrypt.html" target="_blank" rel="noopener">NCrypt<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a>, <a class="link" href="https://dev.charlestoriola.com/orderly.html" target="_blank" rel="noopener">Orderly<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a>), and I still open After Effects on weekends.</p>
+
+    <h2>Why both:</h2>
+    <p>I love creating. Lately it's <span class="rotator" id="rotator"><span>APIs.</span></span></p>
+    <p>Code and creative have always scratched the same itch for me. Some weeks I'm deep in <span class="hl">Flask routes and database schemas.</span> Other weeks I'm <span class="hl">colour-grading an event film at 2am.</span> The medium may change, but the urge never did.</p>
+
+    <h2>What I work across:</h2>
+    <ul>
+      <li>PHP, Python (Flask) and React apps, from the backend to the UI.</li>
+      <li>Brand systems: logos, brochures, decks and ID cards.</li>
+      <li>Event films, motion graphics and colour grading.</li>
+      <li>Live production: two cameras, three screens, OBS and an ATEM.</li>
+    </ul>
+
+    <h2 id="contact">Get in touch:</h2>
+    <p class="status"><i></i>Taking on new work · <span data-abuja-time>--:--</span> in Abuja</p>
+    <dl class="contact-list">
+      <dt>Email</dt><dd><a href="mailto:toriola333@gmail.com">toriola333@gmail.com</a></dd>
+      <dt>Phone</dt><dd><a href="tel:+2348166295770">+234 816 629 5770</a></dd>
+      <dt>GitHub</dt><dd><a href="https://github.com/ctoriola" target="_blank" rel="noopener">@ctoriola</a></dd>
+      <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/charles-toriola-36b64b283" target="_blank" rel="noopener">Charles Toriola</a></dd>
+      <dt>Archive</dt><dd><a href="https://drive.google.com/drive/folders/1dR0bheCgAM76rYGLXpDpPbsf07zTeTqo?usp=share_link" target="_blank" rel="noopener">Google Drive</a></dd>
+    </dl>
+    <a class="btn-touch" href="mailto:toriola333@gmail.com"><span data-px="mail" data-scale="1.2" data-ink="#fff" data-fill="#111"></span>get in touch</a>
+
+    <p class="sign">Charles Toriola<small>Abuja, 2026</small></p>
+  </article>
+</main>
+
+<script src="/assets/js/common.js"></script>
+<script>
+(function () {
+  const words = ["APIs.", "brand systems.", "motion.", "dashboards.", "livestreams.", "pitch decks."];
+  const el = document.getElementById("rotator");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let i = 0;
+  setInterval(function () { i = (i + 1) % words.length; el.innerHTML = "<span>" + words[i] + "</span>"; }, 1800);
+})();
+</script>
+</body>
+</html>
