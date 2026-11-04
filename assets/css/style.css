@@ -117,13 +117,19 @@ body.drawing .ink-bar { transform: translate(-50%, 0); opacity: 1; }
 .dock-links a { color: var(--muted); transition: color .2s; }
 .dock-links a:hover { color: var(--ink-2); }
 .dock-links a[aria-current="page"] { color: var(--ink); }
-.dock-right { position: relative; display: inline-flex; }
+.dock-right { display: flex; align-items: center; gap: 14px; }
+.dock-tool, .dock-mail { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.dock-tool { width: 38px; height: 38px; border-radius: 10px; transition: background .2s, transform .2s var(--ease); }
+.dock-tool:hover { background: rgba(47,91,255,.08); transform: translateY(-2px); }
+.dock-tool.on { background: rgba(47,91,255,.14); }
 .dock-right .tip {
   position: absolute; right: 0; bottom: calc(100% + 10px);
   font-size: 12px; white-space: nowrap; color: var(--muted);
-  opacity: 0; transform: translateY(4px); transition: .2s var(--ease);
+  opacity: 0; transform: translateY(4px); transition: .2s var(--ease); pointer-events: none;
 }
-.dock-right:hover .tip, .dock-right:focus-visible .tip { opacity: 1; transform: none; }
+.dock-tool .tip { right: 50%; transform: translate(50%, 4px); }
+.dock-mail:hover .tip, .dock-mail:focus-visible .tip { opacity: 1; transform: none; }
+.dock-tool:hover .tip, .dock-tool:focus-visible .tip { opacity: 1; transform: translate(50%, 0); }
 
 /* ==========================================================
    HOME — intro + hero
@@ -183,7 +189,7 @@ body.drawing .ink-bar { transform: translate(-50%, 0); opacity: 1; }
   pointer-events: none;
 }
 .pick:hover .pick-tip, .pick:focus-visible .pick-tip { opacity: 1; }
-.pick-hand { right: -82px; top: -26px; }
+.pick-hand { right: -10px; top: 2px; }
 .pick-pen  { left: -86px;  top: 62%; }
 
 .hero-figure {
@@ -611,15 +617,18 @@ body.intro-running { overflow: hidden; }
   .ink-bar { top: 12px; }
   .ink-bar .lbl { display: none; }
   .dock { padding: 0 20px 6px; }
-  .dock-left { gap: 16px; }
-  .dock-links { gap: 16px; font-size: 16px; }
+  .dock-left { gap: 12px; }
+  .dock-right { gap: 2px; }
+  .dock-tool { width: 34px; height: 34px; }
+  .dock-tool .tip { display: none; }
+  .dock-links { gap: 12px; font-size: 15px; }
 
   .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: calc(var(--nav-h) - 10px); }
   .hero-copy { justify-self: center; margin: 0; padding: 40px 16px 0; text-align: center; width: 100%; max-width: 360px; position: relative; z-index: 2; }
   .hero-name { margin-bottom: 30px; font-size: 60px; }
   .hero-blurb { font-size: 15px; }
   .hero-social { justify-content: center; margin-top: 26px; }
-  .pick-hand { right: -54px; top: -30px; }
+  .pick-hand { right: -14px; top: 0; }
   .pick-pen { left: -58px; }
   .hero-figure { position: relative; align-self: center; width: min(150px, 37vw); margin: 30px 0 0 8%; z-index: 1; }
   .intro-skip { top: 22px; right: 22px; }

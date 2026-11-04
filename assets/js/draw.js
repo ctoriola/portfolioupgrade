@@ -111,9 +111,27 @@
   }
 
   let active = null, last = null, erasing = false, dirty = false;
+  // a pen/eraser button sitting under the ink (like the ones beside the
+  // name) should still switch tools instead of being drawn over
+  function toolUnder(e) {
+    const els = document.elementsFromPoint ? document.elementsFromPoint(e.clientX, e.clientY) : [];
+    for (let i = 0; i < els.length; i++) {
+      if (els[i] === canvas) continue;
+      const b = els[i].closest && els[i].closest("[data-cursor]");
+      if (b) return b;
+    }
+    return null;
+  }
+  canvas.addEventListener("pointermove", function (e) {
+    if (active || erasing) return;
+    if (toolUnder(e)) canvas.style.setProperty("cursor", "pointer", "important");
+    else canvas.style.removeProperty("cursor");
+  });
   canvas.addEventListener("pointerdown", function (e) {
     const tool = window.CTTool && window.CTTool.get();
     if (!tool || (e.button !== undefined && e.button !== 0)) return;
+    const btn = toolUnder(e);
+    if (btn) { e.preventDefault(); window.CTTool.set(btn.getAttribute("data-cursor")); return; }
     e.preventDefault();
     canvas.setPointerCapture(e.pointerId);
     resize();

@@ -316,10 +316,14 @@
           }).join("") +
         "</div>" +
       "</div>" +
-      '<a class="dock-right" href="mailto:toriola333@gmail.com" aria-label="Email Charles">' +
-        '<span class="tip">toriola333@gmail.com</span>' +
-        '<span data-px="windowOut" data-scale="2"></span>' +
-      "</a>";
+      '<div class="dock-right">' +
+        '<button class="dock-tool" type="button" data-cursor="pen" aria-pressed="false" aria-label="Pen: draw on the page"><span class="tip">draw</span><span data-px="pen" data-scale="1.6" data-ink="#2f5bff"></span></button>' +
+        '<button class="dock-tool" type="button" data-cursor="eraser" aria-pressed="false" aria-label="Eraser: erase drawings"><span class="tip">erase</span><span data-px="eraser" data-scale="1.6" data-ink="#2f5bff"></span></button>' +
+        '<a class="dock-mail" href="mailto:toriola333@gmail.com" aria-label="Email Charles">' +
+          '<span class="tip">toriola333@gmail.com</span>' +
+          '<span data-px="windowOut" data-scale="2"></span>' +
+        "</a>" +
+      "</div>";
     const fade = document.createElement("div");
     fade.className = "dock-fade";
     document.body.appendChild(fade);
