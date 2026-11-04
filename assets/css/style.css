@@ -209,8 +209,8 @@ body.intro-running { overflow: hidden; }
 }
 .work-head { max-width: 1080px; margin: 0 auto 70px; padding: 0 10px; }
 .work-kicker { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); margin: 0 0 18px; }
-.work-head h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; letter-spacing: -.02em; margin: 0 0 18px; max-width: 12ch; }
-.work-head .dim { max-width: 460px; margin: 0; font-size: 15.5px; line-height: 1.55; }
+.work-head h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; letter-spacing: -.02em; margin: 0; max-width: 12ch; }
+.hero-copy, .hero-figure img, .work-head { will-change: transform; }
 
 /* stacked, sticky project sheets */
 .stack { position: relative; counter-reset: proj; padding-bottom: 8vh; }

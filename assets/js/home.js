@@ -339,9 +339,76 @@
     update();
   }
 
+  // =========================================================
+  // Weighted scrolling. Wheel input moves a target; the page eases
+  // toward it (inertia). Scroll velocity then drives a damped spring
+  // that lets the hero and the work heading lag and settle, so the
+  // move from hero to work feels like it has mass.
+  // =========================================================
+  function physics() {
+    if (reduce) return;
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const hero = document.querySelector(".hero");
+    const copy = document.querySelector(".hero-copy");
+    const figImg = document.querySelector(".hero-figure img");
+    const head = document.querySelector(".work-head");
+    const maxY = function () { return document.documentElement.scrollHeight - window.innerHeight; };
+
+    let target = window.scrollY, current = window.scrollY, lastY = window.scrollY;
+    let wheeling = false;
+    // spring state (offset in px and its velocity)
+    let off = 0, offV = 0;
+
+    if (fine) {
+      window.addEventListener("wheel", function (e) {
+        if (e.ctrlKey || document.body.classList.contains("intro-running")) return;
+        e.preventDefault();
+        const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+        if (!wheeling) { target = current = window.scrollY; }
+        target = Math.min(maxY(), Math.max(0, target + d));
+        wheeling = true;
+      }, { passive: false });
+      // keyboard, scrollbar or anchor jumps: hand control back to native scroll
+      ["keydown", "mousedown", "touchstart"].forEach(function (ev) {
+        window.addEventListener(ev, function () { wheeling = false; }, { passive: true });
+      });
+    }
+
+    function tick() {
+      if (wheeling) {
+        current += (target - current) * 0.075;          // lower = heavier
+        if (Math.abs(target - current) < 0.4) { current = target; wheeling = false; }
+        window.scrollTo(0, current);
+      }
+      const y = window.scrollY;
+      const vel = y - lastY;                            // px per frame
+      lastY = y;
+
+      // damped spring: pushed by scroll velocity, pulled back to 0
+      const k = 0.07, damp = 0.88;
+      offV = (offV + (vel * 1.6 - off) * k) * damp;
+      off += offV;
+      const o = Math.max(-90, Math.min(90, off));
+
+      // hero: content drifts slower than the page and sinks back
+      const h = hero.offsetHeight;
+      if (y < h * 1.2) {
+        const p = Math.min(1, y / h);
+        copy.style.transform = "translate3d(0," + (y * 0.32 + o * 0.35).toFixed(1) + "px,0)";
+        copy.style.opacity = (1 - p * 1.1).toFixed(3);
+        figImg.style.transform = "translate3d(0," + (y * 0.12 + o * 0.2).toFixed(1) + "px,0) scale(" + (1 - p * 0.06).toFixed(4) + ")";
+      }
+      // work heading: rises in with a lag, overshoots slightly, settles
+      head.style.transform = "translate3d(0," + (o * 0.9).toFixed(1) + "px,0)";
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     intro();
     stack();
+    physics();
     const map = { ppa: scenePPA, ncrypt: sceneNcrypt, vat: sceneVat, ew: sceneEw, school: sceneSchool };
     document.querySelectorAll("[data-scene]").forEach(function (el) {
       const fn = map[el.getAttribute("data-scene")];
