@@ -83,6 +83,35 @@
       });
     }
 
+    // the real cursor is a rock in the stream: pointers part around it
+    // and close up again behind it (mouse / trackpad only)
+    const mouse = { x: -9999, y: -9999, on: false };
+    const R = 120;                                      // radius of influence
+    function onMove(e) {
+      if (e.pointerType && e.pointerType !== "mouse" && e.pointerType !== "pen") return;
+      mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true;
+    }
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.documentElement.addEventListener("mouseleave", function () { mouse.on = false; });
+    function avoid(b, dt) {
+      if (!mouse.on) return;
+      const cx = b.x + 8 * b.s, cy = b.y + 10 * b.s;    // sprite centre
+      const dx = cx - mouse.x, dy = cy - mouse.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 > R * R) return;
+      const d = Math.sqrt(d2) || 1;
+      const f = 1 - d / R, f2 = f * f;
+      // straight out from the cursor...
+      b.x += (dx / d) * f2 * 10 * dt;
+      b.y += (dy / d) * f2 * 10 * dt;
+      // ...and swept sideways around it, on whichever side it is already on
+      const v = Math.hypot(b.vx, b.vy) || 1;
+      const nx = -b.vy / v, ny = b.vx / v;
+      const side = (dx * nx + dy * ny) >= 0 ? 1 : -1;
+      b.vx += nx * side * f * 0.9 * dt;
+      b.vy += ny * side * f * 0.9 * dt;
+    }
+
     const t0 = performance.now();
     let last = t0;
     function frame(now) {
@@ -99,6 +128,8 @@
         if (t < b.delay) {
           // cruise right in a loose, wavy flock
           b.vy += Math.sin(t * 2.2 + b.ph) * 0.03 * dt;
+          avoid(b, dt);
+          b.vy *= Math.pow(0.985, dt);                  // settle back into the flow
           b.x += b.vx * dt; b.y += b.vy * dt;
         } else {
           // home in on the phone screen
@@ -107,6 +138,7 @@
           const speed = Math.min(14, 5 + (t - b.delay) * 9);
           b.vx += ((dx / d) * speed - b.vx) * 0.09 * dt;
           b.vy += ((dy / d) * speed - b.vy) * 0.09 * dt;
+          if (d > 70) avoid(b, dt);                     // never block the last dive in
           b.x += b.vx * dt; b.y += b.vy * dt;
           if (d < 50) b.s *= Math.pow(0.86, dt);
           if (d < 10 || b.s < 0.12) { b.dead = true; continue; }
@@ -117,7 +149,10 @@
         ctx.drawImage(sprite, 0, 0);
         ctx.restore();
       }
-      if ((alive === 0 && t > 1.5) || t > 5.2) { finish(); return; }
+      if ((alive === 0 && t > 1.5) || t > 5.2) {
+        window.removeEventListener("pointermove", onMove);
+        finish(); return;
+      }
       raf = requestAnimationFrame(frame);
     }
     raf = requestAnimationFrame(frame);
