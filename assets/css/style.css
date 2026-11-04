@@ -451,15 +451,18 @@ body.intro-running { overflow: hidden; }
 .fun-side h1 { display: flex; align-items: center; gap: 18px; font-weight: 400; font-size: 17px; margin: 0 0 50px; }
 .fun-side p { margin: 0 0 26px; font-size: 17px; line-height: 1.5; letter-spacing: -.01em; color: var(--muted); max-width: 210px; }
 .fun-side p .hl { color: var(--ink); }
-.fun-rail {
-  position: relative; padding-top: 130px; overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 90px), transparent);
-          mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 90px), transparent);
+.fun-rail { position: relative; padding-top: 130px; overflow: hidden; }
+/* soft edges: plain colour fades (no masking, no blur). The left one only
+   appears once tiles actually slide under it. */
+.fun-rail::before, .fun-rail::after {
+  content: ""; position: absolute; top: 140px; bottom: 0; z-index: 4; pointer-events: none;
 }
-.fun-progress { position: absolute; top: 130px; left: 2px; right: 60px; height: 2px; background: #dcdcdc; }
+.fun-rail::before { left: 0; width: var(--fl, 0px); background: linear-gradient(to right, var(--bg), rgba(241,241,241,0)); }
+.fun-rail::after { right: 0; width: 64px; background: linear-gradient(to left, var(--bg), rgba(241,241,241,0)); }
+.fun-progress { position: absolute; top: 130px; left: 6px; right: 60px; z-index: 5; height: 2px; background: #dcdcdc; }
 .fun-progress i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--blue); }
 .fun-progress::before { content: ""; position: absolute; left: -4px; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
-.fun-track { display: flex; gap: 90px; padding: 40px 80px 0 0; will-change: transform; min-height: calc(100vh - 130px); align-items: flex-start; }
+.fun-track { display: flex; gap: 90px; padding: 40px 80px 0 2px; will-change: transform; min-height: calc(100vh - 130px); align-items: flex-start; }
 .shelf { flex: none; }
 .shelf-head { display: flex; align-items: center; gap: 12px; font-size: 17px; margin: 0 0 18px; }
 .shelf-desc { margin: 0 0 44px; font-size: 13.5px; color: var(--muted); max-width: 450px; line-height: 1.5; }
@@ -690,7 +693,8 @@ body.intro-running { overflow: hidden; }
   .fun-sticky { position: relative; height: auto; display: block; overflow: visible; }
   .fun-side { padding: 90px 16px 10px; }
   .fun-side p { max-width: none; }
-  .fun-rail { padding: 20px 0 160px; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .fun-rail { padding: 20px 0 160px; overflow: visible; }
+  .fun-rail::before, .fun-rail::after { display: none; }
   .fun-progress { display: none; }
   .fun-track { flex-direction: column; gap: 60px; padding: 0 16px; transform: none !important; min-height: 0; align-items: stretch; }
   .tiles { display: grid; height: auto; grid-template-columns: 1fr 1fr; grid-auto-rows: 170px; }

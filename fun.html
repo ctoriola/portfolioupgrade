@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=202611041552">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611041558">
 </head>
 <body data-page="fun" class="fun-page">
 
@@ -101,14 +101,15 @@
   </div>
 </main>
 
-<script src="/assets/js/common.js?v=202611041552"></script>
-<script src="/assets/js/draw.js?v=202611041552"></script>
+<script src="/assets/js/common.js?v=202611041558"></script>
+<script src="/assets/js/draw.js?v=202611041558"></script>
 <script>
 /* Vertical scroll drives the horizontal track on wide screens. */
 (function () {
   const fun = document.getElementById("fun");
   const track = document.getElementById("track");
   const bar = document.getElementById("progress");
+  const rail = track.parentElement;
   const mq = window.matchMedia("(max-width: 760px)");
   let dist = 0;
   function measure() {
@@ -123,6 +124,7 @@
     const y = Math.min(Math.max(window.scrollY - fun.offsetTop, 0), dist);
     track.style.transform = "translate3d(" + (-y) + "px,0,0)";
     bar.style.width = (dist ? (y / dist) * 100 : 0) + "%";
+    rail.style.setProperty("--fl", Math.min(48, y * 0.5).toFixed(1) + "px");
   }
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", measure);
