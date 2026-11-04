@@ -306,8 +306,42 @@
     track.innerHTML = html + html; // doubled for a seamless loop
   }
 
+  // =========================================================
+  // Stacked work sheets: each sticky sheet slides over the last;
+  // covered sheets shrink and dim a little.
+  // =========================================================
+  function stack() {
+    const sheets = Array.prototype.slice.call(document.querySelectorAll("#stack .project"));
+    sheets.forEach(function (el, i) {
+      el.style.setProperty("--i", i);
+      const sh = document.createElement("span");
+      sh.className = "shade";
+      el.appendChild(sh);
+    });
+    if (reduce) return;
+    let ticking = false;
+    function update() {
+      ticking = false;
+      for (let i = 0; i < sheets.length - 1; i++) {
+        const me = sheets[i], next = sheets[i + 1];
+        const h = me.offsetHeight;
+        const myTop = me.getBoundingClientRect().top;
+        const gap = next.getBoundingClientRect().top - myTop;   // shrinks as next slides up
+        const p = Math.min(1, Math.max(0, 1 - gap / h));
+        const covered = sheets.length - 1 - i;                  // deeper sheets shrink a touch more
+        me.style.transform = "scale(" + (1 - p * Math.min(0.06, 0.025 * covered)) + ")";
+        me.lastChild.style.opacity = (p * 0.12).toFixed(3);
+      }
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     intro();
+    stack();
     const map = { ppa: scenePPA, ncrypt: sceneNcrypt, vat: sceneVat, ew: sceneEw, school: sceneSchool };
     document.querySelectorAll("[data-scene]").forEach(function (el) {
       const fn = map[el.getAttribute("data-scene")];
