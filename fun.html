@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=202611041812">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611061439">
 </head>
 <body data-page="fun" class="fun-page">
 
@@ -101,8 +101,8 @@
   </div>
 </main>
 
-<script src="/assets/js/common.js?v=202611041812"></script>
-<script src="/assets/js/draw.js?v=202611041812"></script>
+<script src="/assets/js/common.js?v=202611061439"></script>
+<script src="/assets/js/draw.js?v=202611061439"></script>
 <script>
 /* Vertical scroll drives the horizontal track on wide screens. */
 (function () {
@@ -127,6 +127,41 @@
     rail.style.setProperty("--fl", Math.min(48, y * 0.5).toFixed(1) + "px");
   }
   window.addEventListener("scroll", update, { passive: true });
+
+  // Sideways input moves through the shelves too: a trackpad swipe left or
+  // right, shift + mouse wheel, a tilt wheel, or the left / right arrow keys.
+  // It all becomes page scroll, so the progress bar and position stay in sync.
+  document.documentElement.style.overscrollBehaviorX = "none";   // no back-swipe
+  let goal = null, raf = 0;
+  function glide() {
+    const y = window.scrollY, d = goal - y;
+    if (Math.abs(d) < 0.5) { window.scrollTo(0, goal); goal = null; raf = 0; return; }
+    window.scrollTo(0, y + d * 0.2);
+    raf = requestAnimationFrame(glide);
+  }
+  function nudge(px, smooth) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (!smooth) { goal = null; cancelAnimationFrame(raf); raf = 0; window.scrollBy(0, px); return; }
+    goal = Math.min(max, Math.max(0, (goal === null ? window.scrollY : goal) + px));
+    if (!raf) raf = requestAnimationFrame(glide);
+  }
+  window.addEventListener("wheel", function (e) {
+    if (mq.matches || e.ctrlKey) return;
+    const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerWidth : 1;
+    let dx = e.deltaX * unit;
+    if (e.shiftKey && !dx) dx = e.deltaY * unit;          // shift + wheel
+    if (!dx || Math.abs(dx) <= Math.abs(e.deltaY * unit) && !e.shiftKey) return;   // mostly vertical: native
+    e.preventDefault();
+    nudge(dx, Math.abs(dx) >= 40);                        // trackpads track 1:1, notchy wheels glide
+  }, { passive: false });
+  window.addEventListener("keydown", function (e) {
+    if (mq.matches || e.altKey || e.metaKey || e.ctrlKey) return;
+    const t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); nudge(160, true); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); nudge(-160, true); }
+  });
+
   window.addEventListener("resize", measure);
   window.addEventListener("load", measure);
   document.addEventListener("DOMContentLoaded", measure);
