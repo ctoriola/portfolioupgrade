@@ -1,7 +1,6 @@
 /* Art: a desktop of draggable folders that open into windows. */
 (function () {
   "use strict";
-  const DRIVE = "https://drive.google.com/drive/folders/1dR0bheCgAM76rYGLXpDpPbsf07zTeTqo?usp=share_link";
   const FOLDERS = [
     { id: "posters", name: "Posters", pos: [0.06, 0.05], items: [
       ["/assets/img/posters/poster-1.webp", "Limitless", "Typographic poster"],
@@ -35,8 +34,8 @@
       ["/assets/img/cases/hengtai-raytech-1.webp", "Hengtai Raytech", "hengtairaytech.com", "https://hengtairaytech.com", "/work/hengtai-raytech"],
       ["/assets/img/cases/hengtai-raytech-3.webp", "Hengtai Raytech", "See. Know. Act.", "https://hengtairaytech.com", "/work/hengtai-raytech"],
     ] },
-    { id: "archive", name: "Archive", pos: [0.48, 0.24], note:
-      'Event films, livestream clips, decks and the rest of the creative archive live in Google Drive. <a href="' + DRIVE + '" target="_blank" rel="noopener">Open the archive ↗</a>' },
+    { id: "more", name: "More work", pos: [0.48, 0.24], note:
+      'There\'s more where this came from: event films, livestream clips, decks and the rest. Email me at <a href="mailto:toriola333@gmail.com">toriola333@gmail.com</a> and I\'ll share what fits what you\'re building.' },
   ];
 
   const desk = document.getElementById("desktop");
