@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/assets/img/hero-blue.webp">
-<link rel="stylesheet" href="/assets/css/style.css?v=202611061439">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611231700">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Charles Toriola","jobTitle":"Full Stack Developer & Creative Lead","worksFor":{"@type":"Organization","name":"PrimeTEK Group"},"address":{"@type":"PostalAddress","addressLocality":"Abuja","addressCountry":"NG"},"email":"mailto:toriola333@gmail.com","url":"https://charlestoriola.com/","sameAs":["https://github.com/ctoriola","https://www.linkedin.com/in/charles-toriola-36b64b283"]}
 </script>
@@ -70,29 +70,50 @@
   <section class="work" id="work" aria-labelledby="work-title">
     <header class="work-head">
       <p class="work-kicker"><span data-px="folderOpen" data-scale="1"></span>Selected work</p>
-      <h2 id="work-title">Five builds. Shipped end to end.</h2>
+      <h2 id="work-title">Six builds. Shipped end to end.</h2>
     </header>
     <div class="stack" id="stack">
 
     <!-- 01 PitchPerfectAI -->
     <article class="project">
-      <a class="p-card" href="https://dev.charlestoriola.com/pitchperfectai.html" target="_blank" rel="noopener" aria-label="PitchPerfectAI project">
+      <a class="p-card" href="https://getpitchperfect.vercel.app" target="_blank" rel="noopener" aria-label="PitchPerfectAI project">
         <div class="scene scene-ppa" data-scene="ppa">
           <div class="ppa-logo"><i></i>PitchPerfectAI</div>
           <div class="ppa-stack"></div>
           <div class="ppa-brief" data-brief></div>
-          <div class="ppa-count">slide <b data-slide>01</b> / 13</div>
+          <div class="ppa-count">slide <b data-slide>01</b> / 10</div>
         </div>
       </a>
       <div class="p-info">
         <ul class="p-meta"><li>Solo build</li><li>Python · Flask · Gemini</li></ul>
         <h2 class="p-title">Briefs In, Pitch Decks Out.</h2>
-        <p class="p-desc">Feed it a brief, documents or a GitHub repo; get back a 13-slide pitch deck. Built solo, end to end. 40+ decks generated so far.</p>
-        <a class="p-cta" href="https://dev.charlestoriola.com/pitchperfectai.html" target="_blank" rel="noopener"><span data-px="folder" data-scale="1.7"></span>View project <span class="arrow" data-px="arrowRight" data-scale="1.6"></span></a>
+        <p class="p-desc">Give it one line about your idea or a GitHub repo; get back an investor-ready deck of 4, 6 or 10 slides, with an AI coach that scores each section. Built solo, end to end. 40+ decks generated so far.</p>
+        <a class="p-cta" href="https://getpitchperfect.vercel.app" target="_blank" rel="noopener"><span data-px="folder" data-scale="1.7"></span>View live app <span class="arrow" data-px="arrowRight" data-scale="1.6"></span></a>
       </div>
     </article>
 
-    <!-- 02 VATClear -->
+    <!-- 02 PDF to Slides -->
+    <article class="project">
+      <a class="p-card" href="https://pdf-pptx-olive.vercel.app" target="_blank" rel="noopener" aria-label="PDF to Slides project">
+        <div class="scene scene-pdf" data-scene="pdf">
+          <div class="pdf-logo"><i></i>PDF → Slides</div>
+          <div class="pdf-flow">
+            <div class="pdf-page" data-page></div>
+            <div class="pdf-arrow" aria-hidden="true"><span data-px="arrowRight" data-scale="2" data-ink="#6ef2c4"></span><small data-step>reading</small></div>
+            <div class="pdf-slide" data-slide></div>
+          </div>
+          <div class="pdf-foot"><span>handbook.pdf · 312 pages</span><span>slide <b data-count>01</b> / 48</span></div>
+        </div>
+      </a>
+      <div class="p-info">
+        <ul class="p-meta"><li>PDF → Slides</li><li>Python · Flask · PyMuPDF</li></ul>
+        <h2 class="p-title">Any PDF In, an Editable Deck Out.</h2>
+        <p class="p-desc">Reports, brochures and 2,000-page textbooks become PowerPoint decks with their chapters, layouts and figures in the right place. Optional AI summaries, never new facts.</p>
+        <a class="p-cta" href="https://pdf-pptx-olive.vercel.app" target="_blank" rel="noopener"><span data-px="folder" data-scale="1.7"></span>View live app <span class="arrow" data-px="arrowRight" data-scale="1.6"></span></a>
+      </div>
+    </article>
+
+    <!-- 03 VATClear -->
     <article class="project">
       <a class="p-card" href="https://thetaxapp.vercel.app" target="_blank" rel="noopener" aria-label="VATClear project">
         <div class="scene scene-vat" data-scene="vat">
@@ -119,10 +140,11 @@
       </div>
     </article>
 
-    <!-- 03 Lyrics to EasyWorship -->
+    <!-- 04 Lyrics to EasyWorship -->
     <article class="project">
       <a class="p-card" href="https://ewschedule.vercel.app" target="_blank" rel="noopener" aria-label="Lyrics to EasyWorship project">
         <div class="scene scene-ew" data-scene="ew">
+          <div class="s-logo ew-mark"><i></i>ewschedule</div>
           <div class="ew-flow">
             <div class="ew-doc">
               <div class="ew-doc-head"><span>sunday_lyrics.docx</span><span class="ew-pill">DOCX</span></div>
@@ -145,10 +167,11 @@
       </div>
     </article>
 
-    <!-- 04 NCrypt -->
+    <!-- 05 NCrypt -->
     <article class="project">
-      <a class="p-card" href="https://dev.charlestoriola.com/ncrypt.html" target="_blank" rel="noopener" aria-label="NCrypt project">
+      <a class="p-card" href="https://n-crypt.vercel.app" target="_blank" rel="noopener" aria-label="NCrypt project">
         <div class="scene scene-ncrypt" data-scene="ncrypt">
+          <div class="s-logo nc-mark"><i></i>NCrypt</div>
           <div class="nc-wrap">
             <div class="nc-file"><span data-px="folder" data-scale="1" data-ink="#39ff9c" data-fill="#050807"></span><span data-file>contract_final.pdf</span><span class="tag plain" data-tag>PLAINTEXT</span></div>
             <div class="nc-bytes" data-bytes></div>
@@ -160,14 +183,15 @@
         <ul class="p-meta"><li>NCrypt</li><li>React · Web Crypto</li></ul>
         <h2 class="p-title">Encrypted Before It Ever Leaves Your Browser.</h2>
         <p class="p-desc">File sharing where files are AES-GCM encrypted in your browser before they ever touch a server.</p>
-        <a class="p-cta" href="https://dev.charlestoriola.com/ncrypt.html" target="_blank" rel="noopener"><span data-px="folder" data-scale="1.7"></span>View project <span class="arrow" data-px="arrowRight" data-scale="1.6"></span></a>
+        <a class="p-cta" href="https://n-crypt.vercel.app" target="_blank" rel="noopener"><span data-px="folder" data-scale="1.7"></span>View live app <span class="arrow" data-px="arrowRight" data-scale="1.6"></span></a>
       </div>
     </article>
 
-    <!-- 05 School management -->
+    <!-- 06 School management -->
     <article class="project">
       <a class="p-card" href="https://dev.charlestoriola.com/work.html" target="_blank" rel="noopener" aria-label="School management system project">
         <div class="scene scene-school" data-scene="school">
+          <div class="s-logo sc-mark"><i></i>Wepluz</div>
           <div class="sc-win">
             <div class="sc-bar"><i></i><i></i><i></i><span>wepluz / school-admin / results</span></div>
             <div class="sc-rows"><div class="sc-track" data-rows></div></div>
@@ -192,8 +216,9 @@
   </section>
 </main>
 
-<script src="/assets/js/common.js?v=202611061439"></script>
+<script src="/assets/js/common.js?v=202611231200"></script>
 <script src="/assets/js/draw.js?v=202611061439"></script>
-<script src="/assets/js/home.js?v=202611061439"></script>
+<script src="/assets/js/scenes.js?v=202611231400"></script>
+<script src="/assets/js/home.js?v=202611231200"></script>
 </body>
 </html>
