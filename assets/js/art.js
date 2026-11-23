@@ -9,6 +9,11 @@
       ["/assets/img/posters/poster-3.webp", "Independence Day", "El-Panthomath Park"],
       ["/assets/img/posters/poster-4.webp", "Eid Mubarak", "Campaign poster"],
       ["/assets/img/posters/poster-5.webp", "Speak Up", "Granny Murray Schools"],
+      ["/assets/img/posters/poster-waec.webp", "Best Wishes", "WAEC 2026 · Granny Murray Schools"],
+      ["/assets/img/posters/poster-world-book-day.webp", "World Book Day", "Granny Murray Schools"],
+      ["/assets/img/posters/poster-world-book-day-2.webp", "World Book Day", "Library edition · Granny Murray Schools"],
+      ["/assets/img/posters/poster-press-freedom.webp", "Press Freedom Day", "Granny Murray Schools"],
+      ["/assets/img/posters/poster-back-to-school.webp", "2 Days Left", "Resumption countdown · Granny Murray Schools"],
     ] },
     { id: "portraits", name: "Portraits", pos: [0.14, 0.05], items: [
       ["/assets/img/photos/charles-studio.webp", "Studio", "Portrait"],
