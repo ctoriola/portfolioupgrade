@@ -552,6 +552,7 @@ body.intro-running { overflow: hidden; }
 .tile.case .cap b { font-weight: 500; }
 .tile.case .cap::after { content: " · case study →"; opacity: .8; }
 .tile.case.ext .cap::after { content: " ↗"; }
+.tile.light .cap { color: #111; text-shadow: none; right: auto; padding: 4px 9px; border-radius: 6px; background: rgba(255,255,255,.94); box-shadow: 0 1px 6px rgba(0,0,0,.12); }
 .tile.soon { background: transparent; border: 1px dashed #c8c8c8; color: var(--muted); display: grid; place-items: center; font-size: 13px; }
 
 /* ==========================================================
