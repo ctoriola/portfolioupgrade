@@ -3,7 +3,7 @@ Edit the CASES table, then run from the repo root: python3 scripts/build_cases.p
 import html, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611232100"
+V = "202611232400"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
@@ -299,10 +299,10 @@ def page(c):
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css?v=%(v)s">
 </head>
-<body data-page="fun" class="case-page">
+<body data-page="studio" class="case-page">
 
 <main class="case-wrap">
-  <a class="case-back" href="/fun"><span data-px="arrowLeft" data-scale="1.6"></span>back to fun</a>
+  <a class="case-back" href="/studio"><span data-px="arrowLeft" data-scale="1.6"></span>back to studio</a>
 
   <header class="case-head">
     <div>

@@ -886,6 +886,14 @@ body.intro-running { overflow: hidden; }
   .about-copy h2 { margin-top: 50px; }
 }
 
+@media (max-width: 360px) {
+  .dock { padding: 0 12px 6px; }
+  .dock-left { gap: 6px; }
+  .dock-links { gap: 8px; font-size: 13px; }
+  .dock-right { gap: 0; }
+  .dock-tool { width: 28px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
