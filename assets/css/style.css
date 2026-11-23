@@ -321,6 +321,9 @@ body.intro-running { overflow: hidden; }
 .p-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 15.5px; }
 .p-cta .arrow { transition: transform .25s var(--ease); }
 .p-cta:hover .arrow { transform: translateX(4px); }
+.p-links { display: flex; align-items: center; gap: 12px 26px; flex-wrap: wrap; }
+.p-live { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); transition: color .2s; }
+.p-live:hover { color: var(--ink); }
 
 .work-end {
   max-width: 970px; margin: 160px auto 0;
