@@ -3,7 +3,7 @@ Edit the CASES table, then run from the repo root: python3 scripts/build_cases.p
 import html, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611231700"
+V = "202611231800"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
@@ -75,7 +75,7 @@ CASES = [
         ],
         palette=[("Black", "#0e0e0e"), ("Safety orange", "#ef5b00"), ("White", "#ffffff"), ("Steel", "#454545")],
         fonts=["Onest · display", "Inter Tight · text"],
-        gallery=[("primetekssc-2.webp", "About: 14 years of defence expertise as one bold number", False),
+        gallery=[("primetekssc-about.webp", "About: 14 years of defence expertise as one bold number", False),
                  ("primetekssc-3.webp", "Operational portfolio with a vertical project index", False),
                  ("primetekssc-4.webp", "Footer: contact up top, the PRIMETEK wordmark underneath", True)],
     ),

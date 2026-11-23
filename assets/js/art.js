@@ -26,7 +26,7 @@
       ["/assets/img/cases/fipco-1.webp", "FIPCO", "fipcoltd.com", "https://fipcoltd.com", "/work/fipco"],
       ["/assets/img/cases/fipco-2.webp", "FIPCO", "Reliable. Safe. Forward.", "https://fipcoltd.com", "/work/fipco"],
       ["/assets/img/cases/primetekssc-1.webp", "PrimeTEK SSC", "primetekssc.com", "https://primetekssc.com", "/work/primetek-ssc"],
-      ["/assets/img/cases/primetekssc-2.webp", "PrimeTEK SSC", "14 years of defence expertise", "https://primetekssc.com", "/work/primetek-ssc"],
+      ["/assets/img/cases/primetekssc-about.webp", "PrimeTEK SSC", "14 years of defence expertise", "https://primetekssc.com", "/work/primetek-ssc"],
       ["/assets/img/cases/hengtai-raytech-1.webp", "Hengtai Raytech", "hengtairaytech.com", "https://hengtairaytech.com", "/work/hengtai-raytech"],
       ["/assets/img/cases/hengtai-raytech-3.webp", "Hengtai Raytech", "See. Know. Act.", "https://hengtairaytech.com", "/work/hengtai-raytech"],
     ] },
