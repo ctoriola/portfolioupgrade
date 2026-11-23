@@ -3,7 +3,7 @@ Edit the CASES table, then run from the repo root: python3 scripts/build_cases.p
 import html, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611231900"
+V = "202611232100"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
