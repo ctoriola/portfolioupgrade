@@ -439,6 +439,17 @@ body.intro-running { overflow: hidden; }
 .sc-stats b { color: #fff; font-weight: 400; }
 
 
+
+/* header logo for scenes that don't draw their own */
+.s-logo { position: absolute; top: 26px; left: 30px; z-index: 2; display: flex; align-items: center; gap: 10px; font-family: var(--f-sans); font-weight: 500; font-size: 15px; letter-spacing: -.01em; color: #fff; }
+.s-logo i { display: inline-block; width: 16px; height: 16px; border-radius: 4px; }
+.ew-mark i { background: linear-gradient(135deg, #9b8cff, #5b46e6); }
+.nc-mark i { background: #39ff9c; border-radius: 3px; box-shadow: inset 0 0 0 4px #050807, inset 0 0 0 6px #39ff9c; }
+.sc-mark i { background: #ffd84a; border-radius: 50%; }
+.scene-ew .ew-flow { margin-top: 30px; }
+.scene-ncrypt .nc-wrap { margin-top: 34px; }
+.scene-school .sc-win { margin-top: 34px; }
+
 /* 6 · PDF → Slides (Mint & Black, like the app) */
 .scene-pdf { background: radial-gradient(110% 110% at 0% 0%, #0f2a22 0%, #050807 55%, #000 100%); }
 .pdf-logo { position: absolute; top: 26px; left: 30px; display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 15px; letter-spacing: -.01em; }
@@ -540,14 +551,7 @@ body.intro-running { overflow: hidden; }
 .tile.case .cap { font-size: 11.5px; }
 .tile.case .cap b { font-weight: 500; }
 .tile.case .cap::after { content: " · case study →"; opacity: .8; }
-.tile.type.case { color: #fff; }
-.tile.type.case .big { font-family: var(--f-serif); font-size: 32px; }
-.tile.type.case .go { font-size: 12px; color: #fff; opacity: .7; transition: opacity .2s; }
-.tile.type.case:hover .go { opacity: 1; }
-.tile.type.yt { background: #ff0033; }
-.tile.type.yt .small { color: #ffd6dd; }
-.tile.type.yt .big { font-size: 28px; }
-.tile.type.yt .dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; display: inline-block; margin-right: 8px; animation: blink 1.2s steps(1) infinite; }
+.tile.case.ext .cap::after { content: " ↗"; }
 .tile.soon { background: transparent; border: 1px dashed #c8c8c8; color: var(--muted); display: grid; place-items: center; font-size: 13px; }
 
 /* ==========================================================
@@ -729,7 +733,7 @@ body.intro-running { overflow: hidden; }
 .case-stats div { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px; padding: 16px 16px 14px; }
 .case-stats b { display: block; font-family: var(--f-serif); font-weight: 400; font-size: 30px; letter-spacing: -.02em; color: var(--ink); line-height: 1.05; }
 .case-stats span { display: block; margin-top: 6px; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
-.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; margin-bottom: 18px; }
 .swatch { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #e3e3e3; }
 .swatch i { display: block; height: 74px; background: var(--c); border-bottom: 1px solid rgba(0,0,0,.06); }
 .swatch span { display: block; padding: 9px 11px 10px; font-size: 12px; color: var(--ink-2); }
@@ -816,7 +820,8 @@ body.intro-running { overflow: hidden; }
   .ew-line:nth-child(n+5) { display: none; }
   .sc-stats { display: none; }
   .sc-rows { height: 8.4em; }
-  .pdf-logo { top: 14px; left: 18px; font-size: 13px; }
+  .pdf-logo, .s-logo { top: 14px; left: 18px; font-size: 13px; }
+  .scene-ew .ew-flow, .scene-ncrypt .nc-wrap, .scene-school .sc-win { margin-top: 26px; }
   .pdf-flow { width: 90%; margin-top: 18px; }
   .pdf-arrow small { display: none; }
   .pdf-foot { left: 18px; right: 18px; bottom: 12px; font-size: 10px; }

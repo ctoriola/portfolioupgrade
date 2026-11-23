@@ -19,8 +19,8 @@
     const stack = el.querySelector(".ppa-stack");
     const counter = el.querySelector("[data-slide]");
     const briefEl = el.querySelector("[data-brief]");
-    const titles = ["The problem", "Our solution", "Market size", "Product", "How it works", "Traction", "Business model", "Competition", "Go-to-market", "Team", "Financials", "The ask", "Thank you"];
-    const briefs = ["brief: queue app for clinics in Abuja", "repo: github.com/ctoriola/taxapp", "docs: school_admin_overview.pdf"];
+    const titles = ["The problem", "Our solution", "Market size", "Product", "How it works", "Traction", "Business model", "Competition", "Team", "The ask"];
+    const briefs = ["idea: queue app for clinics in Abuja", "repo: github.com/ctoriola/taxapp", "idea: farm-to-table delivery for Lagos"];
     let i = 0, timer = 0, typer = 0, bi = 0;
 
     function deal() {

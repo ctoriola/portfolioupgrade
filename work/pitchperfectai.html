@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PitchPerfectAI — Charles Toriola</title>
-<meta name="description" content="Case study: PitchPerfectAI turns a brief, documents or a GitHub repo into a 13-slide pitch deck. Built solo by Charles Toriola.">
+<meta name="description" content="Case study: PitchPerfectAI turns an idea or a GitHub repo into an investor pitch deck, with an AI coach. Built solo by Charles Toriola.">
 <meta name="theme-color" content="#f1f1f1">
 <link rel="canonical" href="https://charlestoriola.com/work/pitchperfectai">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PitchPerfectAI · Charles Toriola">
-<meta property="og:description" content="Case study: PitchPerfectAI turns a brief, documents or a GitHub repo into a 13-slide pitch deck. Built solo by Charles Toriola.">
+<meta property="og:description" content="Case study: PitchPerfectAI turns an idea or a GitHub repo into an investor pitch deck, with an AI coach. Built solo by Charles Toriola.">
 <meta property="og:image" content="https://charlestoriola.com/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=202611231200">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611231400">
 </head>
 <body data-page="fun" class="case-page">
 
@@ -28,52 +28,65 @@
       <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software · solo build</p>
       <h1>PitchPerfectAI</h1>
     </div>
-    <p class="case-lede">Feed it a brief, documents or a GitHub repo; get back a <span class="hl">13-slide pitch deck</span>. Built solo, end to end.</p>
+    <p class="case-lede">From one line of an idea, or a GitHub repo, to an <span class="hl">investor-ready pitch deck</span> in minutes. Built solo, end to end.</p>
   </header>
 
   <div class="case-hero"><div class="scene scene-ppa" data-scene="ppa">
       <div class="ppa-logo"><i></i>PitchPerfectAI</div>
       <div class="ppa-stack"></div>
       <div class="ppa-brief" data-brief></div>
-      <div class="ppa-count">slide <b data-slide>01</b> / 13</div>
+      <div class="ppa-count">slide <b data-slide>01</b> / 10</div>
         </div></div>
 
   <dl class="case-facts">
       <div><dt>Role</dt><dd>Solo build, end to end</dd></div>
       <div><dt>Stack</dt><dd>Python · Flask · Gemini</dd></div>
-      <div><dt>Output</dt><dd>13-slide pitch decks</dd></div>
-      <div><dt>Project</dt><dd><a href="https://dev.charlestoriola.com/pitchperfectai.html" target="_blank" rel="noopener">dev.charlestoriola.com<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
+      <div><dt>Output</dt><dd>Styled PowerPoint decks, 4, 6 or 10 slides</dd></div>
+      <div><dt>Live</dt><dd><a href="https://getpitchperfect.vercel.app" target="_blank" rel="noopener">getpitchperfect.vercel.app<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
   </dl>
 
   <div class="case-body">
     <section class="case-sec">
       <h2><small>01</small>The problem</h2>
       <div>
-<p>Founders and teams usually have the material, a brief, a few documents, the code itself, but not the deck. Turning that into a pitch is days of work that has little to do with building the product.</p>
+<ul><li>Great products get lost in weak, unstructured pitches.</li><li>Writing and designing a deck takes days founders don't have.</li><li>Technical teams struggle to turn code into a business story.</li></ul>
       </div>
     </section>
 
     <section class="case-sec">
       <h2><small>02</small>What it does</h2>
       <div>
-<p>Give it a written brief, upload documents or point it at a GitHub repo. It returns a deck in the order investors expect:</p>
-<ul><li>The problem, the solution and the market size</li><li>Product, how it works and traction</li><li>Business model, competition and go-to-market</li><li>Team, financials and the ask</li></ul>
+<p>Describe your startup in a sentence or two, or paste a <span class="hl">GitHub repository</span>, public or private. It reads the README, topics and languages, and turns those code signals into business value. With no repo, it builds the story from your description plus market context from a quick web search.</p>
+<p>You choose the length, <span class="hl">4, 6 or 10 slides</span>, and it writes one slide per section, grounding product claims in what you gave it. Then you download a styled PowerPoint.</p>
       </div>
     </section>
 
     <section class="case-sec">
-      <h2><small>03</small>How it's built</h2>
+      <h2><small>03</small>Pitchy, the coach</h2>
       <div>
-<p>A <span class="hl">Flask</span> backend reads the inputs and has <span class="hl">Gemini</span> draft each slide. A deck builder then splits the content into slide-sized sections, the same approach I later reused in <a class="link" href="/work/pdf-to-slides">PDF → Slides</a>.</p>
+<p>Pitchy scores every section out of five, tells you what investors will find weak, starting with the weakest, and <span class="hl">rewrites it with one click</span>. Keep the change or undo it.</p>
       </div>
     </section>
 
     <section class="case-sec">
-      <h2><small>04</small>Results</h2>
+      <h2><small>04</small>How it's built</h2>
       <div>
-<div class="case-stats"><div><b>40+</b><span>decks generated so far</span></div><div><b>13</b><span>slides per deck</span></div><div><b>1</b><span>person, end to end</span></div></div>
+<p>A <span class="hl">Flask</span> backend with <span class="hl">Gemini</span> drafting each slide. The deck builder splits content into slide-sized sections, the same approach I later reused in <a class="link" href="/work/pdf-to-slides">PDF → Slides</a>.</p>
       </div>
     </section>
+
+    <section class="case-sec">
+      <h2><small>05</small>Results</h2>
+      <div>
+<div class="case-stats"><div><b>40+</b><span>decks generated so far</span></div><div><b>4 · 6 · 10</b><span>slides, your choice</span></div><div><b>1</b><span>person, end to end</span></div></div>
+      </div>
+    </section>
+    <div class="case-gallery">
+      <figure class="full"><img src="/assets/img/cases/pitchperfectai-1.webp" width="1200" height="750" alt="Landing page: an idea or a repo in, a deck out, with Pitchy alongside" loading="lazy"><figcaption>Landing page: an idea or a repo in, a deck out, with Pitchy alongside</figcaption></figure>
+      <figure><img src="/assets/img/cases/pitchperfectai-2.webp" width="1200" height="750" alt="The problem, the solution and three steps" loading="lazy"><figcaption>The problem, the solution and three steps</figcaption></figure>
+      <figure><img src="/assets/img/cases/pitchperfectai-3.webp" width="1200" height="750" alt="Key features: GitHub pitches, exact deck length, PowerPoint export" loading="lazy"><figcaption>Key features: GitHub pitches, exact deck length, PowerPoint export</figcaption></figure>
+      <figure class="full"><img src="/assets/img/cases/pitchperfectai-4.webp" width="1200" height="750" alt="Ready to pitch?: the closing call to action" loading="lazy"><figcaption>“Ready to pitch?”: the closing call to action</figcaption></figure>
+    </div>
   </div>
 
   <nav class="case-next" aria-label="Next case study">
@@ -82,8 +95,8 @@
   </nav>
 </main>
 
-<script src="/assets/js/common.js?v=202611231200"></script>
+<script src="/assets/js/common.js?v=202611231400"></script>
 <script src="/assets/js/draw.js?v=202611061439"></script>
-<script src="/assets/js/scenes.js?v=202611231200"></script>
+<script src="/assets/js/scenes.js?v=202611231400"></script>
 </body>
 </html>

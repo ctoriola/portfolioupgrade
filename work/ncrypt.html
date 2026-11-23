@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NCrypt — Charles Toriola</title>
-<meta name="description" content="Case study: NCrypt, file sharing with in-browser AES-GCM encryption. By Charles Toriola.">
+<meta name="description" content="Case study: NCrypt, file sharing with in-browser AES-256-GCM encryption. By Charles Toriola.">
 <meta name="theme-color" content="#f1f1f1">
 <link rel="canonical" href="https://charlestoriola.com/work/ncrypt">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NCrypt · Charles Toriola">
-<meta property="og:description" content="Case study: NCrypt, file sharing with in-browser AES-GCM encryption. By Charles Toriola.">
+<meta property="og:description" content="Case study: NCrypt, file sharing with in-browser AES-256-GCM encryption. By Charles Toriola.">
 <meta property="og:image" content="https://charlestoriola.com/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=202611231200">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611231400">
 </head>
 <body data-page="fun" class="case-page">
 
@@ -25,13 +25,14 @@
 
   <header class="case-head">
     <div>
-      <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software</p>
+      <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software · live app</p>
       <h1>NCrypt</h1>
     </div>
-    <p class="case-lede">File sharing where files are <span class="hl">AES-GCM encrypted in your browser</span> before they ever touch a server.</p>
+    <p class="case-lede">Share files only the right people can open. NCrypt <span class="hl">encrypts files in your browser</span> with a passphrase you choose, then stores only the ciphertext.</p>
   </header>
 
   <div class="case-hero"><div class="scene scene-ncrypt" data-scene="ncrypt">
+      <div class="s-logo nc-mark"><i></i>NCrypt</div>
       <div class="nc-wrap">
         <div class="nc-file"><span data-px="folder" data-scale="1" data-ink="#39ff9c" data-fill="#050807"></span><span data-file>contract_final.pdf</span><span class="tag plain" data-tag>PLAINTEXT</span></div>
         <div class="nc-bytes" data-bytes></div>
@@ -41,25 +42,37 @@
 
   <dl class="case-facts">
       <div><dt>Stack</dt><dd>React · Web Crypto API</dd></div>
-      <div><dt>Cipher</dt><dd>AES-GCM, 256-bit</dd></div>
-      <div><dt>Where</dt><dd>In your browser</dd></div>
-      <div><dt>Project</dt><dd><a href="https://dev.charlestoriola.com/ncrypt.html" target="_blank" rel="noopener">dev.charlestoriola.com<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
+      <div><dt>Crypto</dt><dd>AES-256-GCM · PBKDF2 (SHA-256, 100,000 rounds)</dd></div>
+      <div><dt>Limits</dt><dd>100 MB per file, no account needed</dd></div>
+      <div><dt>Live</dt><dd><a href="https://n-crypt.vercel.app" target="_blank" rel="noopener">n-crypt.vercel.app<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
   </dl>
 
   <div class="case-body">
     <section class="case-sec">
       <h2><small>01</small>The idea</h2>
       <div>
-<p>Most file sharing asks you to trust the server with your files. NCrypt doesn't: contracts, payroll sheets and brand assets are <span class="hl">encrypted on your own device first</span>, so what gets uploaded is ciphertext.</p>
+<p>Most file sharing asks you to trust the server with your files. NCrypt doesn't: contracts, payroll sheets and brand assets are <span class="hl">encrypted on your own device first</span>, so what gets uploaded is ciphertext the server can't read.</p>
       </div>
     </section>
 
     <section class="case-sec">
-      <h2><small>02</small>How it's built</h2>
+      <h2><small>02</small>How it works</h2>
       <div>
-<p>A React front end on the browser's built-in <span class="hl">Web Crypto API</span>, using AES-GCM with 256-bit keys. No crypto libraries to ship or trust, and the plaintext never leaves the page.</p>
+<ul><li><span class="hl">Encrypted on your device.</span> AES-256-GCM with a key derived from your passphrase (PBKDF2, 100,000 rounds). Nothing readable leaves the browser.</li><li><span class="hl">Ciphertext goes to storage.</span> The encrypted bytes go straight to the storage bucket. The server never sees the file or the passphrase.</li><li><span class="hl">Share the ID, not the key.</span> You get an 8-character share ID. Send it and the passphrase separately; the recipient decrypts in their own browser.</li></ul>
       </div>
     </section>
+
+    <section class="case-sec">
+      <h2><small>03</small>How it's built</h2>
+      <div>
+<p>A React front end on the browser's built-in <span class="hl">Web Crypto API</span>. No crypto libraries to ship or trust, and the plaintext never leaves the page.</p>
+      </div>
+    </section>
+    <div class="case-gallery">
+      <figure class="full"><img src="/assets/img/cases/ncrypt-1.webp" width="1200" height="750" alt="Share files only the right people can open." loading="lazy"><figcaption>“Share files only the right people can open.”</figcaption></figure>
+      <figure><img src="/assets/img/cases/ncrypt-2.webp" width="1200" height="750" alt="Encrypt and share, and why your key never leaves you" loading="lazy"><figcaption>Encrypt and share, and why your key never leaves you</figcaption></figure>
+      <figure><img src="/assets/img/cases/ncrypt-3.webp" width="1200" height="750" alt="How it works, and recent guest uploads (still locked)" loading="lazy"><figcaption>How it works, and recent guest uploads (still locked)</figcaption></figure>
+    </div>
   </div>
 
   <nav class="case-next" aria-label="Next case study">
@@ -68,8 +81,8 @@
   </nav>
 </main>
 
-<script src="/assets/js/common.js?v=202611231200"></script>
+<script src="/assets/js/common.js?v=202611231400"></script>
 <script src="/assets/js/draw.js?v=202611061439"></script>
-<script src="/assets/js/scenes.js?v=202611231200"></script>
+<script src="/assets/js/scenes.js?v=202611231400"></script>
 </body>
 </html>

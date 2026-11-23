@@ -3,7 +3,7 @@ Edit the CASES table, then run from the repo root: python3 scripts/build_cases.p
 import html, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611231200"
+V = "202611231400"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
@@ -75,68 +75,88 @@ CASES = [
         ],
         palette=[("Black", "#0e0e0e"), ("Safety orange", "#ef5b00"), ("White", "#ffffff"), ("Steel", "#454545")],
         fonts=["Onest · display", "Inter Tight · text"],
-        gallery=[("primetekssc-2.webp", "About: the years of defence expertise as one bold number", False),
+        gallery=[("primetekssc-2.webp", "About: 14 years of defence expertise as one bold number", False),
                  ("primetekssc-3.webp", "Operational portfolio with a vertical project index", False),
                  ("primetekssc-4.webp", "Footer: contact up top, the PRIMETEK wordmark underneath", True)],
     ),
     dict(
-        slug="hengtai-raytech", kind="brand", name="HengTai Raytech", short="HengTai Raytech",
-        title="HengTai Raytech brand overhaul",
+        slug="hengtai-raytech", kind="brand", name="Hengtai Raytech", short="Hengtai Raytech",
+        title="Hengtai Raytech brand overhaul",
         kicker="Brand overhaul",
-        lede='A complete brand overhaul for <span class="hl">HengTai Raytech</span>: a new identity and visual system, carried through to the website.',
-        desc="Case study: a complete brand overhaul for HengTai Raytech, by Charles Toriola.",
-        hero=dict(placeholder=True),
-        facts=[("Client", "HengTai Raytech"),
+        lede='A complete brand overhaul for <span class="hl">Hengtai Raytech</span>, a Nigerian defence technology maker: one blue, orbital visual system for a company moving from supplier to manufacturer.',
+        desc="Case study: a complete brand overhaul for Hengtai Raytech, a Nigerian defence technology company, by Charles Toriola.",
+        hero=dict(img="hengtai-raytech-1.webp", alt="Hengtai Raytech website hero: Capability, owned. over a blue duotone Earth with a satellite in orbit"),
+        facts=[("Client", "Hengtai Raytech"),
+               ("Sector", "Defence technology: SAR surveillance, satellites, robotics"),
                ("Scope", "Brand identity, visual system, website"),
-               ("Role", "Creative lead"),
                ("Live", ext("https://hengtairaytech.com"))],
         sections=[
-            ("The project", """<p>A full brand overhaul: identity, visual language and the website that carries them.</p>
-<p>The full write-up for this one is on its way. Until then, <a class="link" href="https://hengtairaytech.com" target="_blank" rel="noopener">the live site%s</a> shows the new system in use.</p>""" % EXT),
+            ("The brief", """<p>Hengtai Raytech began as an equipment supplier and has <span class="hl">repositioned as an original manufacturer</span>, building inside Nigeria's defence industrial ecosystem. It makes MiniSAR radar payloads for drones, the SmartSat-X satellite payload, and the X30 and M20 ground robots.</p>
+<p>The brand had to carry that shift, from supplier to sovereign manufacturer: technology designed, built and kept in Nigeria.</p>"""),
+            ("The system", """<p>One colour world. Every image, from Earth seen from orbit to ground station antennas, SAR imagery and the robots themselves, is <span class="hl">washed in a single blue duotone</span>, so space, air and ground read as one capability.</p>
+<p>A tight grotesk sets short, heavy headlines, and the whole site runs on one three-part idea: <span class="hl">See. Know. Act.</span> Specs are given the weight of headlines (0.1 m imaging, 30 km+ links, IP67), and a giant Hengtai Raytech wordmark closes every page.</p>"""),
+            ("Palette &amp; type", "PALETTE"),
+            ("Voice", """<blockquote>Capability, owned.</blockquote>
+<p>Short and certain, built around ownership: <span class="hl">“Build here. Keep it here.”</span>, <span class="hl">“Built for the terrain. Built to stay.”</span> and <span class="hl">“Intelligence that survives the weather.”</span></p>"""),
         ],
+        palette=[("Ink navy", "#051230"), ("Signal blue", "#0368c8"), ("Sky", "#4ea3f0"), ("Mist", "#b7cce4"), ("Blush", "#eef4fb")],
+        fonts=["Stack Sans Notch · display", "Outfit · text"],
+        gallery=[("hengtai-raytech-2.webp", "About: “Build here. Keep it here.”", False),
+                 ("hengtai-raytech-3.webp", "Technology: “See. Know. Act.” over a duotone video", False),
+                 ("hengtai-raytech-4.webp", "The See / Know / Act framework that structures the site", False),
+                 ("hengtai-raytech-5.webp", "Specs set as headlines: 0.1 m, 30 km+, -20°, IP67", False),
+                 ("hengtai-raytech-6.webp", "“One mission. Four precise steps.” from orbit to ground", False),
+                 ("hengtai-raytech-7.webp", "Footer: the Hengtai Raytech wordmark at full width", False)],
     ),
     # ---------------------------------------------------------------- software
     dict(
         slug="pitchperfectai", kind="dev", name="PitchPerfectAI", short="PitchPerfectAI",
         title="PitchPerfectAI",
         kicker="Software · solo build",
-        lede='Feed it a brief, documents or a GitHub repo; get back a <span class="hl">13-slide pitch deck</span>. Built solo, end to end.',
-        desc="Case study: PitchPerfectAI turns a brief, documents or a GitHub repo into a 13-slide pitch deck. Built solo by Charles Toriola.",
+        lede='From one line of an idea, or a GitHub repo, to an <span class="hl">investor-ready pitch deck</span> in minutes. Built solo, end to end.',
+        desc="Case study: PitchPerfectAI turns an idea or a GitHub repo into an investor pitch deck, with an AI coach. Built solo by Charles Toriola.",
         hero=dict(scene="ppa"),
         facts=[("Role", "Solo build, end to end"),
                ("Stack", "Python · Flask · Gemini"),
-               ("Output", "13-slide pitch decks"),
-               ("Project", ext("https://dev.charlestoriola.com/pitchperfectai.html", "dev.charlestoriola.com"))],
+               ("Output", "Styled PowerPoint decks, 4, 6 or 10 slides"),
+               ("Live", ext("https://getpitchperfect.vercel.app"))],
         sections=[
-            ("The problem", """<p>Founders and teams usually have the material, a brief, a few documents, the code itself, but not the deck. Turning that into a pitch is days of work that has little to do with building the product.</p>"""),
-            ("What it does", """<p>Give it a written brief, upload documents or point it at a GitHub repo. It returns a deck in the order investors expect:</p>
-<ul><li>The problem, the solution and the market size</li><li>Product, how it works and traction</li><li>Business model, competition and go-to-market</li><li>Team, financials and the ask</li></ul>"""),
-            ("How it's built", """<p>A <span class="hl">Flask</span> backend reads the inputs and has <span class="hl">Gemini</span> draft each slide. A deck builder then splits the content into slide-sized sections, the same approach I later reused in <a class="link" href="/work/pdf-to-slides">PDF → Slides</a>.</p>"""),
+            ("The problem", """<ul><li>Great products get lost in weak, unstructured pitches.</li><li>Writing and designing a deck takes days founders don't have.</li><li>Technical teams struggle to turn code into a business story.</li></ul>"""),
+            ("What it does", """<p>Describe your startup in a sentence or two, or paste a <span class="hl">GitHub repository</span>, public or private. It reads the README, topics and languages, and turns those code signals into business value. With no repo, it builds the story from your description plus market context from a quick web search.</p>
+<p>You choose the length, <span class="hl">4, 6 or 10 slides</span>, and it writes one slide per section, grounding product claims in what you gave it. Then you download a styled PowerPoint.</p>"""),
+            ("Pitchy, the coach", """<p>Pitchy scores every section out of five, tells you what investors will find weak, starting with the weakest, and <span class="hl">rewrites it with one click</span>. Keep the change or undo it.</p>"""),
+            ("How it's built", """<p>A <span class="hl">Flask</span> backend with <span class="hl">Gemini</span> drafting each slide. The deck builder splits content into slide-sized sections, the same approach I later reused in <a class="link" href="/work/pdf-to-slides">PDF → Slides</a>.</p>"""),
             ("Results", "STATS"),
         ],
-        stats=[("40+", "decks generated so far"), ("13", "slides per deck"), ("1", "person, end to end")],
+        stats=[("40+", "decks generated so far"), ("4 · 6 · 10", "slides, your choice"), ("1", "person, end to end")],
+        gallery=[("pitchperfectai-1.webp", "Landing page: an idea or a repo in, a deck out, with Pitchy alongside", True),
+                 ("pitchperfectai-2.webp", "The problem, the solution and three steps", False),
+                 ("pitchperfectai-3.webp", "Key features: GitHub pitches, exact deck length, PowerPoint export", False),
+                 ("pitchperfectai-4.webp", "“Ready to pitch?”: the closing call to action", True)],
     ),
     dict(
         slug="pdf-to-slides", kind="dev", name="PDF → Slides", short="PDF → Slides",
         title="PDF to Slides",
-        kicker="Software · open source",
-        lede='A Flask app that turns <span class="hl">any PDF into an editable PowerPoint deck</span>, from a two-page report to a 2,000-page textbook, with every figure kept on the slide it belongs to.',
+        kicker="Software · live app",
+        lede='Upload a PDF, get a <span class="hl">ready-to-present PowerPoint deck</span>, from a two-page report to a 2,000-page textbook, with every figure kept on the slide it belongs to.',
         desc="Case study: PDF to Slides turns reports, brochures and textbooks into PowerPoint decks. By Charles Toriola.",
         hero=dict(scene="pdf"),
         facts=[("Stack", "Python · Flask · PyMuPDF4LLM · python-pptx"),
                ("AI", "Groq free tier, any OpenAI-compatible model"),
                ("Hosting", "Vercel + Backblaze B2"),
-               ("Code", ext("https://github.com/ctoriola/pdf.pptx", "github.com/ctoriola/pdf.pptx"))],
+               ("Live", ext("https://pdf-pptx-olive.vercel.app") + '<br>' + ext("https://github.com/ctoriola/pdf.pptx", "Source on GitHub"))],
         sections=[
             ("The problem", """<p>Turning a PDF into a presentation is usually copy, paste, resize, repeat. Converters that exist tend to dump each page onto a slide, or lose the structure: chapter titles, numbered steps, tables and the pictures that go with them.</p>"""),
-            ("How it works", """<p>The PDF is converted to Markdown with PyMuPDF4LLM, then a second pass reads the PDF's own font sizes to <span class="hl">recover chapter titles, the document title and heading levels</span> the converter gets wrong. Contents, copyright and cover pages are dropped; icons, rules and duplicate images are filtered out.</p>
-<p>Each section is then recognised for what it is, a product with a photo and a price, a numbered process, a spec sheet, a table, and given a matching layout: product slide, process slide, stat cards, text and image, gallery. Long sections continue on “(cont.)” slides and chapters get divider slides.</p>"""),
+            ("How it works", """<p>It <span class="hl">reads the document first</span>. A brochure becomes product slides with prices and specs; a handbook becomes chapters, steps and quizzes; a report keeps its tables.</p>
+<p>Under the hood the PDF becomes Markdown with PyMuPDF4LLM, then a second pass reads the PDF's own font sizes to recover chapter titles and heading levels the converter gets wrong. Each section is recognised for what it is, a product, a price, a process, a spec sheet, and given a matching layout. Photos, charts and diagrams land on the slide they belong to.</p>"""),
             ("AI that arranges, not invents", """<p>Three slide types: <span class="hl">Standard</span> keeps the full text with no AI at all. <span class="hl">Condensed</span> and <span class="hl">Detailed</span> use an LLM to summarise or expand, with prompts that forbid adding facts, numbers or quotes that aren't in the source. Tables and images are taken out before the call and put back after, so data stays exact.</p>
-<p>An optional planner shows the model only an outline and lets it rearrange sections. Every suggestion is checked against the real blocks, and the rule-based plan wins if the model is missing, rate-limited or wrong.</p>"""),
-            ("Textbooks on serverless", """<p>Vercel functions stop at 300 seconds and 4.5 MB. So uploads go straight to a private B2 bucket, a textbook is read in 300-page parts four at a time, and the plan travels back to the browser so the server never re-reads the PDF. You tick the chapters you want; only those are built. Scanned pages are OCR'd first.</p>"""),
+<p>An AI planner reviews the slide structure from an outline only. Every suggestion is checked against the real content, and the rules win if the model is missing, rate-limited or wrong.</p>"""),
+            ("Textbooks on serverless", """<p>Vercel functions stop at 300 seconds and 4.5 MB. So uploads go straight to a private B2 bucket, a textbook is read in 300-page parts four at a time, and the plan travels back to the browser so the server never re-reads the PDF. You tick the chapters you want; only those are built. Scanned pages are OCR'd first, and the PDF is deleted as soon as the deck is built.</p>"""),
             ("Numbers", "STATS"),
         ],
-        stats=[("3,000", "pages per book, read in parts"), ("&lt;1 s", "to build one chapter of a 500-page book"), ("200 MB", "uploads via Backblaze B2"), ("4", "deck themes")],
+        stats=[("3,000", "pages per book, read in parts"), ("&lt;1 s", "to build one chapter of a 500-page book"), ("200 MB", "uploads"), ("4", "deck themes")],
+        gallery=[("pdf-to-slides-1.webp", "The app: drop a PDF, pick a slide type and theme", True),
+                 ("pdf-to-slides-2.webp", "Read, plan, build: the three steps", True)],
     ),
     dict(
         slug="vatclear", kind="dev", name="VATClear", short="VATClear",
@@ -183,18 +203,22 @@ CASES = [
     dict(
         slug="ncrypt", kind="dev", name="NCrypt", short="NCrypt",
         title="NCrypt",
-        kicker="Software",
-        lede='File sharing where files are <span class="hl">AES-GCM encrypted in your browser</span> before they ever touch a server.',
-        desc="Case study: NCrypt, file sharing with in-browser AES-GCM encryption. By Charles Toriola.",
+        kicker="Software · live app",
+        lede='Share files only the right people can open. NCrypt <span class="hl">encrypts files in your browser</span> with a passphrase you choose, then stores only the ciphertext.',
+        desc="Case study: NCrypt, file sharing with in-browser AES-256-GCM encryption. By Charles Toriola.",
         hero=dict(scene="ncrypt"),
         facts=[("Stack", "React · Web Crypto API"),
-               ("Cipher", "AES-GCM, 256-bit"),
-               ("Where", "In your browser"),
-               ("Project", ext("https://dev.charlestoriola.com/ncrypt.html", "dev.charlestoriola.com"))],
+               ("Crypto", "AES-256-GCM · PBKDF2 (SHA-256, 100,000 rounds)"),
+               ("Limits", "100 MB per file, no account needed"),
+               ("Live", ext("https://n-crypt.vercel.app"))],
         sections=[
-            ("The idea", """<p>Most file sharing asks you to trust the server with your files. NCrypt doesn't: contracts, payroll sheets and brand assets are <span class="hl">encrypted on your own device first</span>, so what gets uploaded is ciphertext.</p>"""),
-            ("How it's built", """<p>A React front end on the browser's built-in <span class="hl">Web Crypto API</span>, using AES-GCM with 256-bit keys. No crypto libraries to ship or trust, and the plaintext never leaves the page.</p>"""),
+            ("The idea", """<p>Most file sharing asks you to trust the server with your files. NCrypt doesn't: contracts, payroll sheets and brand assets are <span class="hl">encrypted on your own device first</span>, so what gets uploaded is ciphertext the server can't read.</p>"""),
+            ("How it works", """<ul><li><span class="hl">Encrypted on your device.</span> AES-256-GCM with a key derived from your passphrase (PBKDF2, 100,000 rounds). Nothing readable leaves the browser.</li><li><span class="hl">Ciphertext goes to storage.</span> The encrypted bytes go straight to the storage bucket. The server never sees the file or the passphrase.</li><li><span class="hl">Share the ID, not the key.</span> You get an 8-character share ID. Send it and the passphrase separately; the recipient decrypts in their own browser.</li></ul>"""),
+            ("How it's built", """<p>A React front end on the browser's built-in <span class="hl">Web Crypto API</span>. No crypto libraries to ship or trust, and the plaintext never leaves the page.</p>"""),
         ],
+        gallery=[("ncrypt-1.webp", "“Share files only the right people can open.”", True),
+                 ("ncrypt-2.webp", "Encrypt and share, and why your key never leaves you", False),
+                 ("ncrypt-3.webp", "How it works, and recent guest uploads (still locked)", False)],
     ),
     dict(
         slug="school-management", kind="dev", name="School management", short="School management",
