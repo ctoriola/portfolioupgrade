@@ -15,12 +15,21 @@
       ["/assets/img/photos/charles-park.webp", "Abuja", "Portrait"],
       ["/assets/img/photos/charles-palms.webp", "Palms", "Portrait"],
     ] },
-    { id: "sites", name: "Sites", pos: [0.22, 0.05], items: [
-      ["/assets/img/sites/design-site.webp", "design.charlestoriola.com", "The canvas", "https://design.charlestoriola.com"],
-      ["/assets/img/sites/dev-site.webp", "dev.charlestoriola.com", "The terminal", "https://dev.charlestoriola.com"],
+    { id: "sites", name: "Project sites", pos: [0.22, 0.05], wide: true, items: [
+      ["/assets/img/cases/pitchperfectai-1.webp", "PitchPerfectAI", "getpitchperfect.vercel.app", "https://getpitchperfect.vercel.app", "/work/pitchperfectai"],
+      ["/assets/img/cases/pdf-to-slides-1.webp", "PDF → Slides", "pdf-pptx-olive.vercel.app", "https://pdf-pptx-olive.vercel.app", "/work/pdf-to-slides"],
+      ["/assets/img/cases/vatclear-1.webp", "VATClear", "thetaxapp.vercel.app", "https://thetaxapp.vercel.app", "/work/vatclear"],
+      ["/assets/img/cases/lyrics-to-easyworship-1.webp", "Lyrics → EasyWorship", "ewschedule.vercel.app", "https://ewschedule.vercel.app", "/work/lyrics-to-easyworship"],
+      ["/assets/img/cases/ncrypt-1.webp", "NCrypt", "n-crypt.vercel.app", "https://n-crypt.vercel.app", "/work/ncrypt"],
     ] },
-    { id: "brand", name: "Brand systems", pos: [0.30, 0.05], note:
-      'Two group rebrands for PrimeTEK Group: logos, brochures, decks and ID cards across five companies. Brochure turnaround went from weeks to days. See the case studies on <a href="https://design.charlestoriola.com" target="_blank" rel="noopener">design.charlestoriola.com</a>.' },
+    { id: "brand", name: "Brand systems", pos: [0.30, 0.05], wide: true, items: [
+      ["/assets/img/cases/fipco-1.webp", "FIPCO", "fipcoltd.com", "https://fipcoltd.com", "/work/fipco"],
+      ["/assets/img/cases/fipco-2.webp", "FIPCO", "Reliable. Safe. Forward.", "https://fipcoltd.com", "/work/fipco"],
+      ["/assets/img/cases/primetekssc-1.webp", "PrimeTEK SSC", "primetekssc.com", "https://primetekssc.com", "/work/primetek-ssc"],
+      ["/assets/img/cases/primetekssc-2.webp", "PrimeTEK SSC", "14 years of defence expertise", "https://primetekssc.com", "/work/primetek-ssc"],
+      ["/assets/img/cases/hengtai-raytech-1.webp", "Hengtai Raytech", "hengtairaytech.com", "https://hengtairaytech.com", "/work/hengtai-raytech"],
+      ["/assets/img/cases/hengtai-raytech-3.webp", "Hengtai Raytech", "See. Know. Act.", "https://hengtairaytech.com", "/work/hengtai-raytech"],
+    ] },
     { id: "archive", name: "Archive", pos: [0.48, 0.24], note:
       'Event films, livestream clips, decks and the rest of the creative archive live in Google Drive. <a href="' + DRIVE + '" target="_blank" rel="noopener">Open the archive ↗</a>' },
   ];
@@ -76,9 +85,10 @@
     if (f.note) body += '<p class="note">' + f.note + "</p>";
     (f.items || []).forEach(function (it, i) {
       body += '<figure><button type="button" data-i="' + i + '" aria-label="View ' + it[1] + '"><img src="' + it[0] + '" alt="' + it[1] + '" loading="lazy"></button>' +
-        "<figcaption>" + (it[3] ? '<a class="link" href="' + it[3] + '" target="_blank" rel="noopener">' + it[1] + "</a>" : it[1]) + "<span>" + it[2] + "</span></figcaption></figure>";
+        "<figcaption>" + (it[3] ? '<a class="link" href="' + it[3] + '" target="_blank" rel="noopener">' + it[1] + "</a>" : it[1]) + "<span>" + it[2] +
+        (it[4] ? ' · <a href="' + it[4] + '">case study</a>' : "") + "</span></figcaption></figure>";
     });
-    win.innerHTML = '<div class="window-bar"><button class="close" type="button" aria-label="Close ' + f.name + '"></button><span data-px="folderOpen" data-scale="1"></span>' + f.name + '<span class="count">' + count + '</span></div><div class="window-body">' + body + "</div>";
+    win.innerHTML = '<div class="window-bar"><button class="close" type="button" aria-label="Close ' + f.name + '"></button><span data-px="folderOpen" data-scale="1"></span>' + f.name + '<span class="count">' + count + '</span></div><div class="window-body' + (f.wide ? " wide" : "") + '">' + body + "</div>";
     document.body.appendChild(win);
     window.PX.renderIcons(win);
     const W = window.innerWidth, H = window.innerHeight;
