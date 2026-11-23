@@ -4,9 +4,9 @@ Static, dependency-free portfolio for Charles Toriola (full stack developer and 
 
 Pages
 
-- `/` (work): cursor-swarm intro, hero with "click to use" pixel cursors, animated project cards
-- `/fun`: posters, brand systems, event films, live production and software on horizontal shelves
-- `/work/<slug>`: case studies (3 brand overhauls, 6 software builds), linked from the fun page tiles
+- `/` (builds): cursor-swarm intro, hero with "click to use" pixel cursors, animated project cards
+- `/studio` (was `/fun`, which redirects here): posters, brand systems, event films, live production and software on horizontal shelves
+- `/work/<slug>`: case studies (3 brand overhauls, 6 software builds), linked from the studio page tiles and the home page cards
 - `/art`: a desktop of draggable folders that open into windows with a lightbox
 - `/about`: polaroids, journey, contact details and a live Abuja clock
 
@@ -16,7 +16,7 @@ Run locally
 python3 -m http.server 8080
 ```
 
-Deploy: push to Vercel (static, `vercel.json` enables clean URLs like `/fun`).
+Deploy: push to Vercel (static, `vercel.json` enables clean URLs like `/studio`).
 
 Structure
 

@@ -3,7 +3,7 @@
      so every stroke is made of chunky 3px pixels.
    - The page layer covers the whole document and scrolls with it. Its x is
      stored relative to the page centre so drawings hold up on resize.
-   - Any element marked [data-ink-layer] (the fun page's sideways track)
+   - Any element marked [data-ink-layer] (the studio page's sideways track)
      gets a layer of its own inside it, so ink drawn there moves with it.
    - One input canvas on top takes every stroke and routes it to the layer
      under the pointer. Strokes are saved per page and per layer.

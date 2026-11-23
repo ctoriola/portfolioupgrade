@@ -323,8 +323,8 @@
 
   // ---------- bottom dock ----------
   function buildDock() {
-    const page = document.body.getAttribute("data-page") || "work";
-    const links = [["work", "/"], ["fun", "/fun"], ["art", "/art"], ["about", "/about"]];
+    const page = document.body.getAttribute("data-page") || "builds";
+    const links = [["builds", "/"], ["studio", "/studio"], ["art", "/art"], ["about", "/about"]];
     const nav = document.createElement("nav");
     nav.className = "dock";
     nav.setAttribute("aria-label", "Primary");
