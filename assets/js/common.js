@@ -278,6 +278,9 @@
     ],
   };
 
+  // mirrored copy for "back" links
+  ICONS.arrowLeft = ICONS.arrowRight.map(function (r) { return r.split("").reverse().join(""); });
+
   const PALETTE = { "#": "currentColor", o: "#fff", w: "#fff", b: "#2f5bff" };
 
   function pixelSVG(rows, scale, opts) {

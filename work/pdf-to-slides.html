@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF to Slides — Charles Toriola</title>
+<meta name="description" content="Case study: PDF to Slides turns reports, brochures and textbooks into PowerPoint decks. By Charles Toriola.">
+<meta name="theme-color" content="#f1f1f1">
+<link rel="canonical" href="https://charlestoriola.com/work/pdf-to-slides">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PDF to Slides · Charles Toriola">
+<meta property="og:description" content="Case study: PDF to Slides turns reports, brochures and textbooks into PowerPoint decks. By Charles Toriola.">
+<meta property="og:image" content="https://charlestoriola.com/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611231200">
+</head>
+<body data-page="fun" class="case-page">
+
+<main class="case-wrap">
+  <a class="case-back" href="/fun"><span data-px="arrowLeft" data-scale="1.6"></span>back to fun</a>
+
+  <header class="case-head">
+    <div>
+      <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software · open source</p>
+      <h1>PDF → Slides</h1>
+    </div>
+    <p class="case-lede">A Flask app that turns <span class="hl">any PDF into an editable PowerPoint deck</span>, from a two-page report to a 2,000-page textbook, with every figure kept on the slide it belongs to.</p>
+  </header>
+
+  <div class="case-hero"><div class="scene scene-pdf" data-scene="pdf">
+      <div class="pdf-logo"><i></i>PDF → Slides</div>
+      <div class="pdf-flow">
+        <div class="pdf-page" data-page></div>
+        <div class="pdf-arrow" aria-hidden="true"><span data-px="arrowRight" data-scale="2" data-ink="#6ef2c4"></span><small data-step>reading</small></div>
+        <div class="pdf-slide" data-slide></div>
+      </div>
+      <div class="pdf-foot"><span>handbook.pdf · 312 pages</span><span>slide <b data-count>01</b> / 48</span></div>
+        </div></div>
+
+  <dl class="case-facts">
+      <div><dt>Stack</dt><dd>Python · Flask · PyMuPDF4LLM · python-pptx</dd></div>
+      <div><dt>AI</dt><dd>Groq free tier, any OpenAI-compatible model</dd></div>
+      <div><dt>Hosting</dt><dd>Vercel + Backblaze B2</dd></div>
+      <div><dt>Code</dt><dd><a href="https://github.com/ctoriola/pdf.pptx" target="_blank" rel="noopener">github.com/ctoriola/pdf.pptx<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
+  </dl>
+
+  <div class="case-body">
+    <section class="case-sec">
+      <h2><small>01</small>The problem</h2>
+      <div>
+<p>Turning a PDF into a presentation is usually copy, paste, resize, repeat. Converters that exist tend to dump each page onto a slide, or lose the structure: chapter titles, numbered steps, tables and the pictures that go with them.</p>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>02</small>How it works</h2>
+      <div>
+<p>The PDF is converted to Markdown with PyMuPDF4LLM, then a second pass reads the PDF's own font sizes to <span class="hl">recover chapter titles, the document title and heading levels</span> the converter gets wrong. Contents, copyright and cover pages are dropped; icons, rules and duplicate images are filtered out.</p>
+<p>Each section is then recognised for what it is, a product with a photo and a price, a numbered process, a spec sheet, a table, and given a matching layout: product slide, process slide, stat cards, text and image, gallery. Long sections continue on “(cont.)” slides and chapters get divider slides.</p>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>03</small>AI that arranges, not invents</h2>
+      <div>
+<p>Three slide types: <span class="hl">Standard</span> keeps the full text with no AI at all. <span class="hl">Condensed</span> and <span class="hl">Detailed</span> use an LLM to summarise or expand, with prompts that forbid adding facts, numbers or quotes that aren't in the source. Tables and images are taken out before the call and put back after, so data stays exact.</p>
+<p>An optional planner shows the model only an outline and lets it rearrange sections. Every suggestion is checked against the real blocks, and the rule-based plan wins if the model is missing, rate-limited or wrong.</p>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>04</small>Textbooks on serverless</h2>
+      <div>
+<p>Vercel functions stop at 300 seconds and 4.5 MB. So uploads go straight to a private B2 bucket, a textbook is read in 300-page parts four at a time, and the plan travels back to the browser so the server never re-reads the PDF. You tick the chapters you want; only those are built. Scanned pages are OCR'd first.</p>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>05</small>Numbers</h2>
+      <div>
+<div class="case-stats"><div><b>3,000</b><span>pages per book, read in parts</span></div><div><b>&lt;1 s</b><span>to build one chapter of a 500-page book</span></div><div><b>200 MB</b><span>uploads via Backblaze B2</span></div><div><b>4</b><span>deck themes</span></div></div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="case-next" aria-label="Next case study">
+    <div><small>Next case study</small><a class="next" href="/work/vatclear">VATClear<span data-px="arrowRight" data-scale="2.4"></span></a></div>
+    <a class="mail link" href="mailto:toriola333@gmail.com">toriola333@gmail.com<span data-px="ext" data-scale="1.4" data-ink="#2f5bff"></span></a>
+  </nav>
+</main>
+
+<script src="/assets/js/common.js?v=202611231200"></script>
+<script src="/assets/js/draw.js?v=202611061439"></script>
+<script src="/assets/js/scenes.js?v=202611231200"></script>
+</body>
+</html>

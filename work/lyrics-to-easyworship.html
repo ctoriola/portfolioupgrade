@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lyrics to EasyWorship — Charles Toriola</title>
+<meta name="description" content="Case study: Lyrics to EasyWorship turns a lyrics document into an EasyWorship 7 schedule. By Charles Toriola.">
+<meta name="theme-color" content="#f1f1f1">
+<link rel="canonical" href="https://charlestoriola.com/work/lyrics-to-easyworship">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lyrics to EasyWorship · Charles Toriola">
+<meta property="og:description" content="Case study: Lyrics to EasyWorship turns a lyrics document into an EasyWorship 7 schedule. By Charles Toriola.">
+<meta property="og:image" content="https://charlestoriola.com/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611231200">
+</head>
+<body data-page="fun" class="case-page">
+
+<main class="case-wrap">
+  <a class="case-back" href="/fun"><span data-px="arrowLeft" data-scale="1.6"></span>back to fun</a>
+
+  <header class="case-head">
+    <div>
+      <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software · live app</p>
+      <h1>Lyrics → EasyWorship</h1>
+    </div>
+    <p class="case-lede">Drop in the week's lyrics document or search for a song by a line you remember. AI builds a schedule that <span class="hl">opens straight in EasyWorship 7</span>.</p>
+  </header>
+
+  <div class="case-hero"><div class="scene scene-ew" data-scene="ew">
+      <div class="ew-flow">
+        <div class="ew-doc">
+          <div class="ew-doc-head"><span>sunday_lyrics.docx</span><span class="ew-pill">DOCX</span></div>
+          <div class="ew-doc-body" data-doc></div>
+        </div>
+        <div class="ew-arrow" aria-hidden="true"><span data-px="arrowRight" data-scale="2" data-ink="#9b8cff"></span><small data-step>AI clean-up</small></div>
+        <div class="ew-slide">
+          <span class="ew-label" data-label>Verse 1</span>
+          <p data-lines></p>
+          <span class="ew-pill out">EWSX</span>
+        </div>
+      </div>
+        </div></div>
+
+  <dl class="case-facts">
+      <div><dt>Stack</dt><dd>JavaScript · Groq · Gemini</dd></div>
+      <div><dt>Output</dt><dd>EasyWorship 7 schedules (.ewsx)</dd></div>
+      <div><dt>Sources</dt><dd>Word .docx, LRCLIB, the web</dd></div>
+      <div><dt>Live</dt><dd><a href="https://ewschedule.vercel.app" target="_blank" rel="noopener">ewschedule.vercel.app<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
+  </dl>
+
+  <div class="case-body">
+    <section class="case-sec">
+      <h2><small>01</small>The problem</h2>
+      <div>
+<p>Every week a church media team gets the lyrics as a Word document and rebuilds them, slide by slide, in EasyWorship. It's slow, it's late on a Saturday, and one wrong paste shows up on the big screen.</p>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>02</small>What it does</h2>
+      <div>
+<ul><li>Upload the week's <span class="hl">.docx</span>, search songs by title or a remembered line, or both</li><li>AI sorts any layout into songs and title slides and labels verses, choruses and bridges</li><li>Preview every slide: two lines per slide by default, long lines on their own, translations kept with their line</li><li>Download a real <span class="hl">.ewsx</span> and open it with File → Open Schedule</li></ul>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>03</small>The lyrics stay yours</h2>
+      <div>
+<p>The AI only decides where songs start and end, the titles, and the labels. <span class="hl">It never rewrites the words.</span> Everything except the sorting and song search runs in the browser, and the app reminds teams to check their licence (e.g. CCLI) for the songs they project.</p>
+      </div>
+    </section>
+    <div class="case-gallery">
+      <figure class="full"><img src="/assets/img/cases/lyrics-to-easyworship-1.webp" width="1200" height="750" alt="Upload a lyrics document or search for a song" loading="lazy"><figcaption>Upload a lyrics document or search for a song</figcaption></figure>
+      <figure><img src="/assets/img/cases/lyrics-to-easyworship-2.webp" width="1200" height="750" alt="Built for Sunday mornings: features" loading="lazy"><figcaption>“Built for Sunday mornings”: features</figcaption></figure>
+      <figure><img src="/assets/img/cases/lyrics-to-easyworship-3.webp" width="1200" height="750" alt="How it works, in three steps" loading="lazy"><figcaption>How it works, in three steps</figcaption></figure>
+    </div>
+  </div>
+
+  <nav class="case-next" aria-label="Next case study">
+    <div><small>Next case study</small><a class="next" href="/work/ncrypt">NCrypt<span data-px="arrowRight" data-scale="2.4"></span></a></div>
+    <a class="mail link" href="mailto:toriola333@gmail.com">toriola333@gmail.com<span data-px="ext" data-scale="1.4" data-ink="#2f5bff"></span></a>
+  </nav>
+</main>
+
+<script src="/assets/js/common.js?v=202611231200"></script>
+<script src="/assets/js/draw.js?v=202611061439"></script>
+<script src="/assets/js/scenes.js?v=202611231200"></script>
+</body>
+</html>

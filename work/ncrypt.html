@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCrypt — Charles Toriola</title>
+<meta name="description" content="Case study: NCrypt, file sharing with in-browser AES-GCM encryption. By Charles Toriola.">
+<meta name="theme-color" content="#f1f1f1">
+<link rel="canonical" href="https://charlestoriola.com/work/ncrypt">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NCrypt · Charles Toriola">
+<meta property="og:description" content="Case study: NCrypt, file sharing with in-browser AES-GCM encryption. By Charles Toriola.">
+<meta property="og:image" content="https://charlestoriola.com/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=202611231200">
+</head>
+<body data-page="fun" class="case-page">
+
+<main class="case-wrap">
+  <a class="case-back" href="/fun"><span data-px="arrowLeft" data-scale="1.6"></span>back to fun</a>
+
+  <header class="case-head">
+    <div>
+      <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software</p>
+      <h1>NCrypt</h1>
+    </div>
+    <p class="case-lede">File sharing where files are <span class="hl">AES-GCM encrypted in your browser</span> before they ever touch a server.</p>
+  </header>
+
+  <div class="case-hero"><div class="scene scene-ncrypt" data-scene="ncrypt">
+      <div class="nc-wrap">
+        <div class="nc-file"><span data-px="folder" data-scale="1" data-ink="#39ff9c" data-fill="#050807"></span><span data-file>contract_final.pdf</span><span class="tag plain" data-tag>PLAINTEXT</span></div>
+        <div class="nc-bytes" data-bytes></div>
+        <div class="nc-foot"><span>AES-GCM · 256-bit · in your browser</span><span data-state>reading…</span></div>
+      </div>
+        </div></div>
+
+  <dl class="case-facts">
+      <div><dt>Stack</dt><dd>React · Web Crypto API</dd></div>
+      <div><dt>Cipher</dt><dd>AES-GCM, 256-bit</dd></div>
+      <div><dt>Where</dt><dd>In your browser</dd></div>
+      <div><dt>Project</dt><dd><a href="https://dev.charlestoriola.com/ncrypt.html" target="_blank" rel="noopener">dev.charlestoriola.com<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
+  </dl>
+
+  <div class="case-body">
+    <section class="case-sec">
+      <h2><small>01</small>The idea</h2>
+      <div>
+<p>Most file sharing asks you to trust the server with your files. NCrypt doesn't: contracts, payroll sheets and brand assets are <span class="hl">encrypted on your own device first</span>, so what gets uploaded is ciphertext.</p>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <h2><small>02</small>How it's built</h2>
+      <div>
+<p>A React front end on the browser's built-in <span class="hl">Web Crypto API</span>, using AES-GCM with 256-bit keys. No crypto libraries to ship or trust, and the plaintext never leaves the page.</p>
+      </div>
+    </section>
+  </div>
+
+  <nav class="case-next" aria-label="Next case study">
+    <div><small>Next case study</small><a class="next" href="/work/school-management">School management<span data-px="arrowRight" data-scale="2.4"></span></a></div>
+    <a class="mail link" href="mailto:toriola333@gmail.com">toriola333@gmail.com<span data-px="ext" data-scale="1.4" data-ink="#2f5bff"></span></a>
+  </nav>
+</main>
+
+<script src="/assets/js/common.js?v=202611231200"></script>
+<script src="/assets/js/draw.js?v=202611061439"></script>
+<script src="/assets/js/scenes.js?v=202611231200"></script>
+</body>
+</html>
