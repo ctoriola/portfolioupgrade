@@ -15,12 +15,12 @@ OG = BASE + "/assets/img/og.jpg"
 PAGES = {
     "index.html": dict(
         path="/", og_type="profile",
-        title="Charles Toriola — Full Stack Developer, Graphic Designer & Videographer in Abuja",
+        title="Charles Toriola — Developer, Graphic Designer & Videographer, Abuja",
         desc="Charles Toriola is a full stack developer, creative lead, graphic designer and videographer in Abuja, Nigeria. Web apps, brand identity, event films and live production, from one person.",
         graph=[WEBSITE, PERSON, SERVICE]),
     "studio.html": dict(
         path="/studio", og_type="website",
-        title="Studio — Graphic Design, Branding, Video & Live Production in Abuja | Charles Toriola",
+        title="Studio — Graphic Design & Video in Abuja | Charles Toriola",
         desc="Brand overhauls, posters, event films and livestream production by Charles Toriola, a graphic designer, videographer and multimedia specialist in Abuja, Nigeria.",
         graph=[{"@type": "CollectionPage", "@id": BASE + "/studio#page", "url": BASE + "/studio",
                 "name": "Studio: graphic design, branding, video and live production in Abuja",
@@ -66,6 +66,7 @@ def head_block(p):
 
 
 for name, p in PAGES.items():
+    assert len(p["title"]) < 70, "%s title is %d characters; keep it under 70" % (name, len(p["title"]))
     s = open(name, encoding="utf-8").read()
     s = OWNED.sub("", s)
     s = LDJSON.sub("", s)
