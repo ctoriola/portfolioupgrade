@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from seo_meta import BASE, PERSON_ID, jsonld
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611251545"
+V = "202611251715"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
@@ -227,23 +227,26 @@ CASES = [
                  ("ncrypt-3.webp", "How it works, and recent guest uploads (still locked)", False)],
     ),
     dict(
-        slug="school-management", kind="dev", name="School management", short="School management",
-        title="School management system",
-        kicker="Software · Wepluz",
-        lede='A school management system running in <span class="hl">100+ schools</span>, some with over 500 students. My first taste of software people depend on every day.',
-        desc="Case study: a PHP school management system running in 100+ schools, built at Wepluz. By Charles Toriola.",
+        slug="school-management", kind="dev", name="Wepluz School Manager", short="Wepluz School Manager",
+        title="Wepluz School Manager",
+        kicker="Software · overhaul",
+        lede='The PHP school system I built at Wepluz runs in <span class="hl">100+ schools</span>. I overhauled it into a multi-school platform: students, attendance, results and fees, with parents kept in the loop by SMS.',
+        desc="Case study: Wepluz School Manager, the overhaul of a PHP school management system used in 100+ schools. By Charles Toriola.",
         hero=dict(scene="school"),
-        facts=[("Company", "Wepluz"),
-               ("Role", "PHP developer"),
-               ("Stack", "PHP · MySQL"),
+        facts=[("Original", "PHP · MySQL, at Wepluz"),
+               ("Overhaul", "React · TypeScript · Tailwind · Firebase · Vercel"),
+               ("Scale", "100+ schools, 500+ students in the largest"),
                ("Live demo", ext("https://wepluzsms.vercel.app"))],
         sections=[
-            ("The work", """<p>School admin software where staff manage students, classes and results. It's the kind of system that has to be right every morning, because a whole school opens it to start the day.</p>"""),
+            ("The original", """<p>School admin software where staff manage students, classes and results, built in PHP and MySQL at Wepluz and now <span class="hl">used daily in 100+ schools</span>. It has to be right every morning, because a whole school opens it to start the day.</p>"""),
+            ("The overhaul", """<p>I rebuilt it from scratch as <span class="hl">Wepluz School Manager</span>, a multi-school platform where each school only ever sees its own data:</p>
+<ul><li>A React web app (Vite, TypeScript, Tailwind) on Firebase Auth and Firestore, hosted on Vercel.</li><li>Reads come straight from Firestore, limited by security rules to the person's school and role. Every write goes through one server function that checks the school's rules, such as term dates inside the session and one teacher per subject per class, then records an audit log entry.</li><li>Parents sign in with a 6-digit code by SMS, so they don't need an email account.</li><li><span class="hl">80 tests</span> run against the Firebase emulators, covering the security rules and every server action.</li></ul>"""),
+            ("The design system", """<p>A mint backdrop, a white rounded app frame and soft grey cards, set in Outfit, with teal for the brand and sunflower for highlights. On desktop the menu is an icon rail that curves out of the frame's left edge; on phones it becomes a labelled drawer. The dashboard <span class="hl">adapts by role</span>: leadership sees school-wide numbers, teachers see their classes and registers, parents see their children. The charts are hand-built, with no chart library, and include a table for screen readers.</p>"""),
+            ("Try the demo", """<p>The <a class="link" href="https://wepluzsms.vercel.app" target="_blank" rel="noopener">live demo%s</a> runs a sample school with one-click sign-ins for every role: proprietor, principal, school admin, bursar, teachers and parents.</p>""" % EXT),
             ("What it taught me", """<p>Building for schools meant building for real users with real deadlines: result days, new terms, a full intake. It's where I learned that <span class="hl">reliability is a feature</span>, and it's the reason I still build end to end.</p>"""),
-            ("Try the demo", """<p>The <a class="link" href="https://wepluzsms.vercel.app" target="_blank" rel="noopener">live demo%s</a> runs a sample school with one-click sign-ins for every role: proprietor, principal, school admin, bursar, teachers and parents. Students, attendance, results and fees sit in one place, and <span class="hl">parents are kept in the loop by SMS and WhatsApp</span>.</p>""" % EXT),
             ("Scale", "STATS"),
         ],
-        stats=[("100+", "schools running it"), ("500+", "students in the largest"), ("Daily", "used every school day")],
+        stats=[("100+", "schools running the original"), ("500+", "students in the largest"), ("80", "tests on the overhaul")],
         gallery=[("school-management-1.webp", "Sign in, or try any role with one click", True),
                  ("school-management-2.webp", "The proprietor's dashboard: term progress and quick actions", False),
                  ("school-management-3.webp", "Students, by class, with promotion and import", False),
@@ -252,9 +255,8 @@ CASES = [
     ),
 ]
 
-CODE = {"fipco": "fipconew", "primetek-ssc": "ptkweb", "hengtai-raytech": "hengtai", "pitchperfectai": "synoptic-webapp",
-        "pdf-to-slides": "pdf.pptx", "vatclear": "taxapp", "lyrics-to-easyworship": "ewschedule", "ncrypt": "ncrypt2",
-        "school-management": "wepluzsms"}
+CODE = {"pitchperfectai": "synoptic-webapp", "pdf-to-slides": "pdf.pptx", "vatclear": "taxapp",
+        "lyrics-to-easyworship": "ewschedule", "ncrypt": "ncrypt2", "school-management": "wepluzsms"}
 
 ORDER = [c["slug"] for c in CASES]
 BY = {c["slug"]: c for c in CASES}
@@ -283,8 +285,8 @@ def page(c):
     i = ORDER.index(c["slug"])
     nxt = BY[ORDER[(i + 1) % len(ORDER)]]
     fl = list(c["facts"])
-    repo = "https://github.com/ctoriola/" + CODE[c["slug"]]
-    if repo not in fl[-1][1]:
+    repo = "https://github.com/ctoriola/" + CODE[c["slug"]] if c["slug"] in CODE else None
+    if repo and repo not in fl[-1][1]:
         fl[-1] = (fl[-1][0], fl[-1][1] + "<br>" + ext(repo, "Source on GitHub"))
     facts = "\n".join('      <div><dt>%s</dt><dd>%s</dd></div>' % f for f in fl)
     secs = []

@@ -262,8 +262,6 @@ body.intro-running { overflow: hidden; }
   padding: 160px 24px 220px;
   position: relative;
 }
-.clients + .work { padding-top: 110px; }
-.clients + .work::before { display: none; }
 .work::before { /* soft seam between hero and work */
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40px;
   background: linear-gradient(var(--bg), var(--bg-2));
@@ -338,14 +336,22 @@ body.intro-running { overflow: hidden; }
 .work-end .dim { font-size: 15.5px; display: block; margin-top: 10px; letter-spacing: 0; }
 .work-end a.mail { font-size: 15.5px; display: inline-flex; gap: 10px; align-items: center; }
 
-/* client logo row */
-.clients { background: var(--bg-2); padding: 90px 24px 0; text-align: center; position: relative; }
-.clients::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40px; background: linear-gradient(var(--bg), var(--bg-2)); }
+/* client logo row: one line everywhere; scrolls with soft edges when it doesn't fit */
+.clients { max-width: 1080px; margin: 120px auto 0; text-align: center; }
 .clients-kicker { margin: 0 0 26px; font-size: 13px; color: var(--muted); }
-.clients-row { list-style: none; margin: 0 auto; padding: 0; max-width: 980px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 26px 54px; }
-.clients-row img { height: var(--h, 44px); width: auto; max-width: 180px; object-fit: contain; filter: grayscale(1) contrast(1.15); opacity: .7; mix-blend-mode: multiply; transition: filter .3s, opacity .3s; }
-.clients-row img[alt="Granny Murray Schools"] { filter: grayscale(1) brightness(.55) contrast(1.6); }
+.clients-row {
+  list-style: none; margin: 0; padding: 4px 24px; background: var(--bg-2); display: flex; flex-wrap: nowrap; align-items: center; justify-content: safe center; gap: 54px;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.clients-row::-webkit-scrollbar { display: none; }
+.clients-row li { flex: none; }
+.clients-row img { display: block; height: var(--h, 44px); width: auto; max-width: none; filter: grayscale(1) contrast(1.15); opacity: .7; mix-blend-mode: multiply; transition: filter .3s, opacity .3s; }
 .clients-row li:hover img { filter: none; opacity: 1; }
+@media (max-width: 980px) {
+  .clients-row { justify-content: safe center; gap: 40px; padding: 4px 36px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+            mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
+}
 
 /* ---------- card scenes (pure CSS/JS animations) ---------- */
 .scene { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; }
@@ -823,10 +829,9 @@ body.intro-running { overflow: hidden; }
   .intro-skip { top: 22px; right: 22px; }
 
   .work { padding: 90px 16px 170px; }
-  .clients { padding: 64px 16px 0; }
-  .clients-row { gap: 20px 30px; }
-  .clients-row img { height: calc(var(--h, 44px) * .72); max-width: 124px; }
-  .clients + .work { padding-top: 70px; }
+  .clients { margin-top: 80px; }
+  .clients-row { gap: 32px; padding: 4px 32px; }
+  .clients-row img { height: calc(var(--h, 44px) * .8); }
   .project { top: calc(14px + var(--i) * 10px); margin-bottom: 20vh; padding: 16px 16px 22px; border-radius: 26px; }
   .project::before { top: auto; bottom: 18px; right: 18px; }
   .work-head { margin-bottom: 40px; padding: 0 4px; }
