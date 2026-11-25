@@ -118,7 +118,7 @@ Contact: toriola333@gmail.com · +234 816 629 5770 · %(base)s/about
 
 ## Pages
 
-- [Builds (home)](%(base)s/): six software projects, shipped end to end.
+- [Builds (home)](%(base)s/): four selected projects, two apps and two brand overhauls, designed and built end to end.
 - [Studio](%(base)s/studio): brand overhauls, posters, event films, livestreams and software, with case studies.
 - [About](%(base)s/about): background, stack by medium, contact.
 - [Art](%(base)s/art): posters, portraits and experimental photo and video work.

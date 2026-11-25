@@ -327,6 +327,10 @@ body.intro-running { overflow: hidden; }
 .p-live { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); transition: color .2s; }
 .p-live:hover { color: var(--ink); }
 
+.stack-more { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 1080px; margin: 70px auto 0; font-size: 15.5px; color: var(--ink-2); }
+.stack-more .arrow { transition: transform .25s var(--ease); }
+.stack-more:hover { color: var(--blue); }
+.stack-more:hover .arrow { transform: translateX(4px); }
 .work-end {
   max-width: 970px; margin: 160px auto 0;
   display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap;
@@ -707,7 +711,7 @@ body.intro-running { overflow: hidden; }
 .rotator span { display: inline-block; animation: rot-in .45s var(--ease); }
 @keyframes rot-in { from { opacity: 0; transform: translateY(8px); } }
 .status { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink-2); margin: 0 0 6px; }
-.status i { width: 8px; height: 8px; border-radius: 50%; background: #28c840; box-shadow: 0 0 0 4px rgba(40,200,64,.15); }
+.status i { flex: none; align-self: flex-start; margin-top: 5px; width: 8px; height: 8px; border-radius: 50%; background: #28c840; box-shadow: 0 0 0 4px rgba(40,200,64,.15); }
 .contact-list { display: grid; grid-template-columns: 90px 1fr; gap: 8px 16px; margin: 14px 0 0; font-size: 15.5px; }
 .contact-list dt { color: var(--muted); }
 .contact-list dd { margin: 0; }

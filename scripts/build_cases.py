@@ -6,16 +6,19 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from seo_meta import BASE, PERSON_ID, jsonld
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611251800"
+V = "202611251915"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
 index = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 
 
+SCENES = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "scenes.html"), encoding="utf-8").read()
+
+
 def scene(name):
-    """Lift a card scene's markup straight from the home page."""
-    m = re.search(r'(<div class="scene scene-[a-z]+" data-scene="%s">.*?)\n      </a>' % name, index, re.S)
+    """Card scene markup for a case study hero, from scripts/scenes.html."""
+    m = re.search(r"<!-- scene:%s -->\n(.*?)\n<!-- /scene:%s -->" % (name, name), SCENES, re.S)
     assert m, name
     return m.group(1).strip()
 
