@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wepluz School Manager — Charles Toriola</title>
-<meta name="description" content="Case study: Wepluz School Manager, the overhaul of a PHP school management system used in 100+ schools. By Charles Toriola.">
+<meta name="description" content="Case study: Wepluz School Manager, a solo overhaul of the PHP and MySQL school management system Charles Toriola ran for 100+ schools.">
 <meta name="theme-color" content="#f1f1f1">
 <link rel="canonical" href="https://www.charlestoriola.com/work/school-management">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wepluz School Manager · Charles Toriola">
-<meta property="og:description" content="Case study: Wepluz School Manager, the overhaul of a PHP school management system used in 100+ schools. By Charles Toriola.">
+<meta property="og:description" content="Case study: Wepluz School Manager, a solo overhaul of the PHP and MySQL school management system Charles Toriola ran for 100+ schools.">
 <meta property="og:url" content="https://www.charlestoriola.com/work/school-management">
 <meta property="og:image" content="https://www.charlestoriola.com/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css?v=202611251915">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","@id":"https://www.charlestoriola.com/work/school-management#work","name":"Wepluz School Manager","url":"https://www.charlestoriola.com/work/school-management","description":"Case study: Wepluz School Manager, the overhaul of a PHP school management system used in 100+ schools. By Charles Toriola.","image":"https://www.charlestoriola.com/assets/img/og.jpg","genre":"Software","creator":{"@type":"Person","@id":"https://www.charlestoriola.com/#person","name":"Charles Toriola","url":"https://www.charlestoriola.com/"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","@id":"https://www.charlestoriola.com/work/school-management#work","name":"Wepluz School Manager","url":"https://www.charlestoriola.com/work/school-management","description":"Case study: Wepluz School Manager, a solo overhaul of the PHP and MySQL school management system Charles Toriola ran for 100+ schools.","image":"https://www.charlestoriola.com/assets/img/og.jpg","genre":"Software","creator":{"@type":"Person","@id":"https://www.charlestoriola.com/#person","name":"Charles Toriola","url":"https://www.charlestoriola.com/"}}]}
 </script>
 </head>
 <body data-page="studio" class="case-page">
@@ -32,7 +32,7 @@
       <p class="case-kicker"><span data-px="windowOut" data-scale="1"></span>Case study · Software · overhaul</p>
       <h1>Wepluz School Manager</h1>
     </div>
-    <p class="case-lede">The PHP school system I built at Wepluz runs in <span class="hl">100+ schools</span>. I overhauled it into a multi-school platform: students, attendance, results and fees, with parents kept in the loop by SMS.</p>
+    <p class="case-lede">At Wepluz I ran the PHP and MySQL system behind <span class="hl">100+ schools</span>, mostly solo. Then I overhauled it on my own into a multi-school platform: students, attendance, results and fees, with parents kept in the loop by SMS.</p>
   </header>
 
   <div class="case-hero"><div class="scene scene-school" data-scene="school">
@@ -45,8 +45,8 @@
         </div></div>
 
   <dl class="case-facts">
-      <div><dt>Original</dt><dd>PHP · MySQL, at Wepluz</dd></div>
-      <div><dt>Overhaul</dt><dd>React · TypeScript · Tailwind · Firebase · Vercel</dd></div>
+      <div><dt>Original</dt><dd>PHP · MySQL at Wepluz, mostly solo with two contracted senior developers</dd></div>
+      <div><dt>Overhaul</dt><dd>Solo · React · TypeScript · Tailwind · Firebase · Vercel</dd></div>
       <div><dt>Scale</dt><dd>100+ schools, 500+ students in the largest</dd></div>
       <div><dt>Live demo</dt><dd><a href="https://wepluzsms.vercel.app" target="_blank" rel="noopener">wepluzsms.vercel.app<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a><br><a href="https://github.com/ctoriola/wepluzsms" target="_blank" rel="noopener">Source on GitHub<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span></a></dd></div>
   </dl>
@@ -55,14 +55,15 @@
     <section class="case-sec">
       <h2><small>01</small>The original</h2>
       <div>
-<p>School admin software where staff manage students, classes and results, built in PHP and MySQL at Wepluz and now <span class="hl">used daily in 100+ schools</span>. It has to be right every morning, because a whole school opens it to start the day.</p>
+<p>I ran the PHP and MySQL setup behind Wepluz's school admin software, where staff manage students, classes and results. It's now <span class="hl">used daily in 100+ schools</span>, some with over 500 students, and it has to be right every morning, because a whole school opens it to start the day.</p>
+<p>For most of the job I worked <span class="hl">solo</span>. Two contracted senior developers came in once in a while, sometimes only over the phone, so most of the day-to-day building, fixing and keeping it running was mine.</p>
       </div>
     </section>
 
     <section class="case-sec">
       <h2><small>02</small>The overhaul</h2>
       <div>
-<p>I rebuilt it from scratch as <span class="hl">Wepluz School Manager</span>, a multi-school platform where each school only ever sees its own data:</p>
+<p>The overhaul was the uphill part, and <span class="hl">I did it on my own</span>: a rebuild from scratch as Wepluz School Manager, a multi-school platform where each school only ever sees its own data:</p>
 <ul><li>A React web app (Vite, TypeScript, Tailwind) on Firebase Auth and Firestore, hosted on Vercel.</li><li>Reads come straight from Firestore, limited by security rules to the person's school and role. Every write goes through one server function that checks the school's rules, such as term dates inside the session and one teacher per subject per class, then records an audit log entry.</li><li>Parents sign in with a 6-digit code by SMS, so they don't need an email account.</li><li><span class="hl">80 tests</span> run against the Firebase emulators, covering the security rules and every server action.</li></ul>
       </div>
     </section>

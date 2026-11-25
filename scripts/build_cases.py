@@ -233,16 +233,17 @@ CASES = [
         slug="school-management", kind="dev", name="Wepluz School Manager", short="Wepluz School Manager",
         title="Wepluz School Manager",
         kicker="Software · overhaul",
-        lede='The PHP school system I built at Wepluz runs in <span class="hl">100+ schools</span>. I overhauled it into a multi-school platform: students, attendance, results and fees, with parents kept in the loop by SMS.',
-        desc="Case study: Wepluz School Manager, the overhaul of a PHP school management system used in 100+ schools. By Charles Toriola.",
+        lede='At Wepluz I ran the PHP and MySQL system behind <span class="hl">100+ schools</span>, mostly solo. Then I overhauled it on my own into a multi-school platform: students, attendance, results and fees, with parents kept in the loop by SMS.',
+        desc="Case study: Wepluz School Manager, a solo overhaul of the PHP and MySQL school management system Charles Toriola ran for 100+ schools.",
         hero=dict(scene="school"),
-        facts=[("Original", "PHP · MySQL, at Wepluz"),
-               ("Overhaul", "React · TypeScript · Tailwind · Firebase · Vercel"),
+        facts=[("Original", "PHP · MySQL at Wepluz, mostly solo with two contracted senior developers"),
+               ("Overhaul", "Solo · React · TypeScript · Tailwind · Firebase · Vercel"),
                ("Scale", "100+ schools, 500+ students in the largest"),
                ("Live demo", ext("https://wepluzsms.vercel.app"))],
         sections=[
-            ("The original", """<p>School admin software where staff manage students, classes and results, built in PHP and MySQL at Wepluz and now <span class="hl">used daily in 100+ schools</span>. It has to be right every morning, because a whole school opens it to start the day.</p>"""),
-            ("The overhaul", """<p>I rebuilt it from scratch as <span class="hl">Wepluz School Manager</span>, a multi-school platform where each school only ever sees its own data:</p>
+            ("The original", """<p>I ran the PHP and MySQL setup behind Wepluz's school admin software, where staff manage students, classes and results. It's now <span class="hl">used daily in 100+ schools</span>, some with over 500 students, and it has to be right every morning, because a whole school opens it to start the day.</p>
+<p>For most of the job I worked <span class="hl">solo</span>. Two contracted senior developers came in once in a while, sometimes only over the phone, so most of the day-to-day building, fixing and keeping it running was mine.</p>"""),
+            ("The overhaul", """<p>The overhaul was the uphill part, and <span class="hl">I did it on my own</span>: a rebuild from scratch as Wepluz School Manager, a multi-school platform where each school only ever sees its own data:</p>
 <ul><li>A React web app (Vite, TypeScript, Tailwind) on Firebase Auth and Firestore, hosted on Vercel.</li><li>Reads come straight from Firestore, limited by security rules to the person's school and role. Every write goes through one server function that checks the school's rules, such as term dates inside the session and one teacher per subject per class, then records an audit log entry.</li><li>Parents sign in with a 6-digit code by SMS, so they don't need an email account.</li><li><span class="hl">80 tests</span> run against the Firebase emulators, covering the security rules and every server action.</li></ul>"""),
             ("The design system", """<p>A mint backdrop, a white rounded app frame and soft grey cards, set in Outfit, with teal for the brand and sunflower for highlights. On desktop the menu is an icon rail that curves out of the frame's left edge; on phones it becomes a labelled drawer. The dashboard <span class="hl">adapts by role</span>: leadership sees school-wide numbers, teachers see their classes and registers, parents see their children. The charts are hand-built, with no chart library, and include a table for screen readers.</p>"""),
             ("Try the demo", """<p>The <a class="link" href="https://wepluzsms.vercel.app" target="_blank" rel="noopener">live demo%s</a> runs a sample school with one-click sign-ins for every role: proprietor, principal, school admin, bursar, teachers and parents.</p>""" % EXT),
