@@ -1,0 +1,33 @@
+# Charles Toriola
+
+> Charles Toriola is a full stack developer, creative lead, graphic designer, videographer and multimedia specialist based in Abuja, Nigeria. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on freelance work in Abuja and remotely.
+
+Roles: Full Stack Developer, Freelance Developer, Creative Lead, Graphic Designer, Videographer, Multimedia Specialist.
+Location: Abuja, FCT, Nigeria.
+Contact: toriola333@gmail.com · +234 816 629 5770 · https://www.charlestoriola.com/about
+
+## What he does
+
+- Full stack web and app development: PHP, MySQL, Python, Flask, JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS, Firebase, Supabase, Vercel.
+- Graphic design and brand identity: complete brand overhauls (identity, visual system and website), posters, brochures, decks. Photoshop, Affinity, Figma, Canva.
+- Videography and motion: event films, colour grading, motion graphics. After Effects, DaVinci Resolve, CapCut.
+- Multimedia and live production: twice-weekly multi-camera livestreams with OBS, vMix, an ATEM switcher, EasyWorship, video processors and LED screens.
+
+## Pages
+
+- [Builds (home)](https://www.charlestoriola.com/): six software projects, shipped end to end.
+- [Studio](https://www.charlestoriola.com/studio): brand overhauls, posters, event films, livestreams and software, with case studies.
+- [About](https://www.charlestoriola.com/about): background, stack by medium, contact.
+- [Art](https://www.charlestoriola.com/art): posters, brand sites and project sites.
+
+## Case studies
+
+- [FIPCO brand overhaul](https://www.charlestoriola.com/work/fipco): a complete brand overhaul for First Interstate Petrochemicals Ltd. (FIPCO), by Charles Toriola.
+- [Hengtai Raytech brand overhaul](https://www.charlestoriola.com/work/hengtai-raytech): a complete brand overhaul for Hengtai Raytech, a Nigerian defence technology company, by Charles Toriola.
+- [Lyrics to EasyWorship](https://www.charlestoriola.com/work/lyrics-to-easyworship): Lyrics to EasyWorship turns a lyrics document into an EasyWorship 7 schedule. By Charles Toriola.
+- [NCrypt](https://www.charlestoriola.com/work/ncrypt): NCrypt, file sharing with in-browser AES-256-GCM encryption. By Charles Toriola.
+- [PDF to Slides](https://www.charlestoriola.com/work/pdf-to-slides): PDF to Slides turns reports, brochures and textbooks into PowerPoint decks. By Charles Toriola.
+- [PitchPerfectAI](https://www.charlestoriola.com/work/pitchperfectai): PitchPerfectAI turns an idea or a GitHub repo into an investor pitch deck, with an AI coach. Built solo by Charles Toriola.
+- [PrimeTEK SSC brand overhaul](https://www.charlestoriola.com/work/primetek-ssc): a complete brand overhaul for PrimeTEK Safety & Security Consultants, by Charles Toriola.
+- [School management system](https://www.charlestoriola.com/work/school-management): a PHP school management system running in 100+ schools, built at Wepluz. By Charles Toriola.
+- [VATClear](https://www.charlestoriola.com/work/vatclear): VATClear, invoices, expenses and VAT for Nigerian SMEs. By Charles Toriola.

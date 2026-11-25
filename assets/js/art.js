@@ -25,6 +25,7 @@
       ["/assets/img/cases/vatclear-1.webp", "VATClear", "thetaxapp.vercel.app", "https://thetaxapp.vercel.app", "/work/vatclear"],
       ["/assets/img/cases/lyrics-to-easyworship-1.webp", "Lyrics → EasyWorship", "ewschedule.vercel.app", "https://ewschedule.vercel.app", "/work/lyrics-to-easyworship"],
       ["/assets/img/cases/ncrypt-1.webp", "NCrypt", "n-crypt.vercel.app", "https://n-crypt.vercel.app", "/work/ncrypt"],
+      ["/assets/img/cases/school-management-1.webp", "Wepluz School Manager", "wepluzsms.vercel.app", "https://wepluzsms.vercel.app", "/work/school-management"],
     ] },
     { id: "brand", name: "Brand systems", pos: [0.30, 0.05], wide: true, items: [
       ["/assets/img/cases/fipco-1.webp", "FIPCO", "fipcoltd.com", "https://fipcoltd.com", "/work/fipco"],
