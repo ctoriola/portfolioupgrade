@@ -15,8 +15,8 @@ OG = BASE + "/assets/img/og.jpg"
 PAGES = {
     "index.html": dict(
         path="/", og_type="profile",
-        title="Charles Toriola — Full Stack Developer & Designer in Abuja",
-        desc="Charles Toriola is a full stack developer, creative lead, graphic designer and videographer in Abuja, Nigeria. Web apps, brand identity, event films and live production, from one person.",
+        title="Charles Toriola — Design Engineer & Full Stack Developer, Abuja",
+        desc="Charles Toriola is a design engineer and creative lead in Abuja, Nigeria: full stack web apps, brand identity, event films and live production, designed and built by one person.",
         graph=[WEBSITE, PERSON, SERVICE]),
     "studio.html": dict(
         path="/studio", og_type="website",
@@ -28,8 +28,8 @@ PAGES = {
                SERVICE, PERSON]),
     "about.html": dict(
         path="/about", og_type="profile",
-        title="About Charles Toriola — Freelance Developer & Creative Lead in Abuja",
-        desc="Charles Toriola is a full stack developer and creative lead in Abuja: Computer Science grad, former PHP developer, now Creative Lead at PrimeTEK Group, and available for freelance development, design, video and multimedia work.",
+        title="About Charles Toriola — Design Engineer & Creative Lead in Abuja",
+        desc="Charles Toriola is a design engineer and creative lead in Abuja: Computer Science grad, former PHP developer, now Creative Lead at PrimeTEK Group, and available for freelance development, design, video and multimedia work.",
         graph=[{"@type": "ProfilePage", "@id": BASE + "/about#page", "url": BASE + "/about",
                 "name": "About Charles Toriola", "isPartOf": {"@id": WEBSITE_ID}, "mainEntity": {"@id": PERSON_ID}},
                PERSON]),
@@ -103,7 +103,7 @@ for c in cases:
     case_lines.append("- [%s](%s/work/%s): %s" % (title, BASE, c, desc.replace("Case study: ", "")))
 llms = """# Charles Toriola
 
-> Charles Toriola is a full stack developer, creative lead, graphic designer, videographer and multimedia specialist based in Abuja, Nigeria. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on freelance work in Abuja and remotely.
+> Charles Toriola is a design engineer and creative lead based in Abuja, Nigeria: a full stack developer, graphic designer, videographer and multimedia specialist in one person. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on freelance work in Abuja and remotely.
 
 Roles: %(roles)s.
 Location: Abuja, FCT, Nigeria.
