@@ -35,8 +35,8 @@ PAGES = {
                PERSON]),
     "art.html": dict(
         path="/art", og_type="website",
-        title="Art — Posters, Brand Sites and Project Sites | Charles Toriola, Abuja",
-        desc="Posters, brand sites and project sites by Charles Toriola, a graphic designer and developer in Abuja, laid out like a desktop.",
+        title="Art — Posters, Portraits & Experiments | Charles Toriola, Abuja",
+        desc="Posters, portraits and experimental photo and video work by Charles Toriola, a design engineer in Abuja, laid out like a desktop.",
         graph=[{"@type": "CollectionPage", "@id": BASE + "/art#page", "url": BASE + "/art",
                 "name": "Art by Charles Toriola", "isPartOf": {"@id": WEBSITE_ID}, "author": {"@id": PERSON_ID}},
                PERSON]),
@@ -103,7 +103,7 @@ for c in cases:
     case_lines.append("- [%s](%s/work/%s): %s" % (title, BASE, c, desc.replace("Case study: ", "")))
 llms = """# Charles Toriola
 
-> Charles Toriola is a design engineer and creative lead based in Abuja, Nigeria: a full stack developer, graphic designer, videographer and multimedia specialist in one person. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on freelance work in Abuja and remotely.
+> Charles Toriola is a design engineer and creative lead based in Abuja, Nigeria: a full stack developer, graphic designer, videographer and multimedia specialist in one person. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on contract and freelance work in Abuja and remotely.
 
 Roles: %(roles)s.
 Location: Abuja, FCT, Nigeria.
@@ -111,7 +111,7 @@ Contact: toriola333@gmail.com · +234 816 629 5770 · %(base)s/about
 
 ## What he does
 
-- Full stack web and app development: PHP, MySQL, Python, Flask, JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS, Firebase, Supabase, Vercel.
+- Full stack web and app development: PHP, MySQL, Python, Flask, JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS, Firebase, Supabase, Gemini, Vercel.
 - Graphic design and brand identity: complete brand overhauls (identity, visual system and website), posters, brochures, decks. Photoshop, Affinity, Figma, Canva.
 - Videography and motion: event films, colour grading, motion graphics. After Effects, DaVinci Resolve, CapCut.
 - Multimedia and live production: twice-weekly multi-camera livestreams with OBS, vMix, an ATEM switcher, EasyWorship, video processors and LED screens.
@@ -121,7 +121,7 @@ Contact: toriola333@gmail.com · +234 816 629 5770 · %(base)s/about
 - [Builds (home)](%(base)s/): six software projects, shipped end to end.
 - [Studio](%(base)s/studio): brand overhauls, posters, event films, livestreams and software, with case studies.
 - [About](%(base)s/about): background, stack by medium, contact.
-- [Art](%(base)s/art): posters, brand sites and project sites.
+- [Art](%(base)s/art): posters, portraits and experimental photo and video work.
 
 ## Case studies
 

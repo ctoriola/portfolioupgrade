@@ -1,6 +1,6 @@
 # Charles Toriola
 
-> Charles Toriola is a design engineer and creative lead based in Abuja, Nigeria: a full stack developer, graphic designer, videographer and multimedia specialist in one person. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on freelance work in Abuja and remotely.
+> Charles Toriola is a design engineer and creative lead based in Abuja, Nigeria: a full stack developer, graphic designer, videographer and multimedia specialist in one person. He builds web apps end to end, designs brand identities and posters, shoots and grades event films, and runs multi-camera livestream production. He is Creative Lead at PrimeTEK Group and takes on contract and freelance work in Abuja and remotely.
 
 Roles: Design Engineer, Full Stack Developer, Freelance Developer, Creative Lead, Graphic Designer, Videographer, Multimedia Specialist.
 Location: Abuja, FCT, Nigeria.
@@ -8,7 +8,7 @@ Contact: toriola333@gmail.com · +234 816 629 5770 · https://www.charlestoriola
 
 ## What he does
 
-- Full stack web and app development: PHP, MySQL, Python, Flask, JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS, Firebase, Supabase, Vercel.
+- Full stack web and app development: PHP, MySQL, Python, Flask, JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS, Firebase, Supabase, Gemini, Vercel.
 - Graphic design and brand identity: complete brand overhauls (identity, visual system and website), posters, brochures, decks. Photoshop, Affinity, Figma, Canva.
 - Videography and motion: event films, colour grading, motion graphics. After Effects, DaVinci Resolve, CapCut.
 - Multimedia and live production: twice-weekly multi-camera livestreams with OBS, vMix, an ATEM switcher, EasyWorship, video processors and LED screens.
@@ -18,7 +18,7 @@ Contact: toriola333@gmail.com · +234 816 629 5770 · https://www.charlestoriola
 - [Builds (home)](https://www.charlestoriola.com/): six software projects, shipped end to end.
 - [Studio](https://www.charlestoriola.com/studio): brand overhauls, posters, event films, livestreams and software, with case studies.
 - [About](https://www.charlestoriola.com/about): background, stack by medium, contact.
-- [Art](https://www.charlestoriola.com/art): posters, brand sites and project sites.
+- [Art](https://www.charlestoriola.com/art): posters, portraits and experimental photo and video work.
 
 ## Case studies
 
