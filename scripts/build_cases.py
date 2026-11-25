@@ -1,6 +1,9 @@
 """Generate the static case study pages in /work from one content table.
 Edit the CASES table, then run from the repo root: python3 scripts/build_cases.py"""
-import html, os, re, sys
+import html, json, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from seo_meta import BASE, PERSON_ID, jsonld
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
 V = "202611232400"
@@ -230,13 +233,19 @@ CASES = [
         facts=[("Company", "Wepluz"),
                ("Role", "PHP developer"),
                ("Stack", "PHP · MySQL"),
-               ("More", ext("https://dev.charlestoriola.com/work.html", "dev.charlestoriola.com"))],
+               ("Live demo", ext("https://wepluzsms.vercel.app"))],
         sections=[
             ("The work", """<p>School admin software where staff manage students, classes and results. It's the kind of system that has to be right every morning, because a whole school opens it to start the day.</p>"""),
             ("What it taught me", """<p>Building for schools meant building for real users with real deadlines: result days, new terms, a full intake. It's where I learned that <span class="hl">reliability is a feature</span>, and it's the reason I still build end to end.</p>"""),
+            ("Try the demo", """<p>The <a class="link" href="https://wepluzsms.vercel.app" target="_blank" rel="noopener">live demo%s</a> runs a sample school with one-click sign-ins for every role: proprietor, principal, school admin, bursar, teachers and parents. Students, attendance, results and fees sit in one place, and <span class="hl">parents are kept in the loop by SMS and WhatsApp</span>.</p>""" % EXT),
             ("Scale", "STATS"),
         ],
         stats=[("100+", "schools running it"), ("500+", "students in the largest"), ("Daily", "used every school day")],
+        gallery=[("school-management-1.webp", "Sign in, or try any role with one click", True),
+                 ("school-management-2.webp", "The proprietor's dashboard: term progress and quick actions", False),
+                 ("school-management-3.webp", "Students, by class, with promotion and import", False),
+                 ("school-management-4.webp", "Daily attendance registers for every class", False),
+                 ("school-management-5.webp", "Sessions and terms that drive every register and report card", False)],
     ),
 ]
 
@@ -279,6 +288,11 @@ def page(c):
     scale = "1.2" if c["kind"] == "brand" else "1"
     scenes_js = '\n<script src="/assets/js/scenes.js?v=%s"></script>' % V if c["hero"].get("scene") else ""
     title = "%s — Charles Toriola" % c["title"]
+    url = "%s/work/%s" % (BASE, c["slug"])
+    img = BASE + ("/assets/img/cases/%s" % c["hero"]["img"] if c["hero"].get("img") else "/assets/img/og.jpg")
+    ld = jsonld({"@type": "CreativeWork", "@id": url + "#work", "name": c["title"], "url": url,
+                 "description": c["desc"], "image": img, "genre": "Brand identity" if c["kind"] == "brand" else "Software",
+                 "creator": {"@type": "Person", "@id": PERSON_ID, "name": "Charles Toriola", "url": BASE + "/"}})
     return """<!doctype html>
 <html lang="en">
 <head>
@@ -287,17 +301,19 @@ def page(c):
 <title>%(title)s</title>
 <meta name="description" content="%(desc)s">
 <meta name="theme-color" content="#f1f1f1">
-<link rel="canonical" href="https://charlestoriola.com/work/%(slug)s">
+<link rel="canonical" href="%(base)s/work/%(slug)s">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta property="og:type" content="article">
 <meta property="og:title" content="%(ogtitle)s">
 <meta property="og:description" content="%(desc)s">
+<meta property="og:url" content="%(base)s/work/%(slug)s">
 <meta property="og:image" content="%(ogimg)s">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css?v=%(v)s">
+%(ld)s
 </head>
 <body data-page="studio" class="case-page">
 
@@ -334,7 +350,7 @@ def page(c):
 </html>
 """ % dict(title=html.escape(title, quote=False).replace("&amp;", "&amp;"), desc=html.escape(c["desc"]), slug=c["slug"],
            ogtitle=html.escape(c["title"] + " · Charles Toriola"),
-           ogimg="https://charlestoriola.com/assets/img/cases/%s" % c["hero"]["img"] if c["hero"].get("img") else "https://charlestoriola.com/assets/img/og.jpg",
+           ogimg=BASE + "/assets/img/cases/%s" % c["hero"]["img"] if c["hero"].get("img") else BASE + "/assets/img/og.jpg", base=BASE, ld=ld,
            v=V, dv=DRAW_V, icon=icon, scale=scale, kicker=c["kicker"], name=c["name"], lede=c["lede"],
            hero=hero_html(c), facts=facts, secs="\n\n".join(secs), gal=gal,
            nslug=nxt["slug"], nname=nxt["name"], scenes_js=scenes_js)

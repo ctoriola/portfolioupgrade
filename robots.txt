@@ -1,0 +1,5 @@
+# Search engines and AI assistants (Google, Bing, ChatGPT, Claude, Perplexity and others) are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.charlestoriola.com/sitemap.xml
