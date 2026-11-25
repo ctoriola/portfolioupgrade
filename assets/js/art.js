@@ -19,23 +19,7 @@
       ["/assets/img/photos/charles-park.webp", "Abuja", "Portrait"],
       ["/assets/img/photos/charles-palms.webp", "Palms", "Portrait"],
     ] },
-    { id: "sites", name: "Project sites", pos: [0.22, 0.05], wide: true, items: [
-      ["/assets/img/cases/pitchperfectai-1.webp", "PitchPerfectAI", "getpitchperfect.vercel.app", "https://getpitchperfect.vercel.app", "/work/pitchperfectai"],
-      ["/assets/img/cases/pdf-to-slides-1.webp", "PDF → Slides", "pdf-pptx-olive.vercel.app", "https://pdf-pptx-olive.vercel.app", "/work/pdf-to-slides"],
-      ["/assets/img/cases/vatclear-1.webp", "VATClear", "thetaxapp.vercel.app", "https://thetaxapp.vercel.app", "/work/vatclear"],
-      ["/assets/img/cases/lyrics-to-easyworship-1.webp", "Lyrics → EasyWorship", "ewschedule.vercel.app", "https://ewschedule.vercel.app", "/work/lyrics-to-easyworship"],
-      ["/assets/img/cases/ncrypt-1.webp", "NCrypt", "n-crypt.vercel.app", "https://n-crypt.vercel.app", "/work/ncrypt"],
-      ["/assets/img/cases/school-management-1.webp", "Wepluz School Manager", "wepluzsms.vercel.app", "https://wepluzsms.vercel.app", "/work/school-management"],
-    ] },
-    { id: "brand", name: "Brand systems", pos: [0.30, 0.05], wide: true, items: [
-      ["/assets/img/cases/fipco-1.webp", "FIPCO", "fipcoltd.com", "https://fipcoltd.com", "/work/fipco"],
-      ["/assets/img/cases/fipco-2.webp", "FIPCO", "Reliable. Safe. Forward.", "https://fipcoltd.com", "/work/fipco"],
-      ["/assets/img/cases/primetekssc-1.webp", "PrimeTEK SSC", "primetekssc.com", "https://primetekssc.com", "/work/primetek-ssc"],
-      ["/assets/img/cases/primetekssc-about.webp", "PrimeTEK SSC", "14 years of defence expertise", "https://primetekssc.com", "/work/primetek-ssc"],
-      ["/assets/img/cases/hengtai-raytech-1.webp", "Hengtai Raytech", "hengtairaytech.com", "https://hengtairaytech.com", "/work/hengtai-raytech"],
-      ["/assets/img/cases/hengtai-raytech-3.webp", "Hengtai Raytech", "See. Know. Act.", "https://hengtairaytech.com", "/work/hengtai-raytech"],
-    ] },
-    { id: "more", name: "More work", pos: [0.48, 0.24], note:
+    { id: "more", name: "More work", pos: [0.22, 0.05], note:
       'There\'s more where this came from: event films, livestream clips, decks and the rest. Email me at <a href="mailto:toriola333@gmail.com">toriola333@gmail.com</a> and I\'ll share what fits what you\'re building.' },
   ];
 

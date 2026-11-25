@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from seo_meta import BASE, PERSON_ID, jsonld
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611232400"
+V = "202611251545"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
@@ -36,7 +36,7 @@ CASES = [
         hero=dict(img="fipco-1.webp", alt="FIPCO website hero: the FIPCO wordmark with an offshore oil rig breaking through the letters"),
         facts=[("Client", "First Interstate Petrochemicals Ltd."),
                ("Sector", "Petrochemicals, energy logistics, oil &amp; gas"),
-               ("Scope", "Brand identity, visual system, website"),
+               ("Scope", "Logo and identity, brand guidelines, print and collateral, website design and build"),
                ("Live", ext("https://fipcoltd.com"))],
         sections=[
             ("The brief", """<p>FIPCO works across <span class="hl">petrochemical supply, energy logistics, industrial consulting and oil exploration</span>, from offices in Lagos, Abuja and Akwa Ibom. One brand had to speak to manufacturers, energy partners and government stakeholders at the same time.</p>
@@ -47,6 +47,7 @@ CASES = [
             ("Voice", """<blockquote>Energy. Industry. Progress.</blockquote>
 <p>Short, declarative lines throughout: <span class="hl">“No shortcuts. Just commitment.”</span> and <span class="hl">“Power your next move.”</span> The three values, reliability, safety and partnership, each get one sentence and no padding.</p>"""),
             ("Where it lives", """<p>The website is where the whole system comes together: hero, services, standards, leadership, offices, FAQ, and a full-bleed red call to action to close.</p>"""),
+            ("The result", """<p>FIPCO was already a Tier-1 operator in Nigeria's energy sector. Now it can <span class="hl">present itself like one</span>, with the same confident identity carried from the website to every printed piece.</p>"""),
         ],
         palette=[("Charcoal", "#1f1f1f"), ("Signal red", "#e51e31"), ("White", "#ffffff"), ("Mid grey", "#a5a5a5")],
         fonts=["Notch · display", "Grotesk · text"],
@@ -65,7 +66,7 @@ CASES = [
         hero=dict(img="primetekssc-1.webp", alt="PrimeTEK SSC website hero: outlined orange type reading Safety & Security Consultants beside a defence montage"),
         facts=[("Client", "PrimeTEK Safety &amp; Security Consultants"),
                ("Sector", "Defence and security consultancy"),
-               ("Scope", "Brand identity, visual system, website"),
+               ("Scope", "Logo and identity, brand guidelines, print and collateral, website design and build"),
                ("Live", ext("https://primetekssc.com"))],
         sections=[
             ("The brief", """<p>PrimeTEK SSC works with national agencies and critical infrastructure on <span class="hl">military solutions, intelligence, cyber defence and risk</span>. The audience is senior, careful and short on time.</p>
@@ -75,6 +76,7 @@ CASES = [
             ("Palette &amp; type", "PALETTE"),
             ("Voice", """<blockquote>Mission-aligned solutions for complex threat environments.</blockquote>
 <p>Measured and exact. Claims are backed by structure rather than adjectives: <span class="hl">“Uncompromising on every front. Every PrimeTEK engagement is held to the same bar, without exception.”</span></p>"""),
+            ("The result", """<p>PrimeTEK SSC already worked at a Tier-1 level with national agencies. The new brand lets it <span class="hl">look that way too</span>, in every pitch, document and page of the website.</p>"""),
         ],
         palette=[("Black", "#0e0e0e"), ("Safety orange", "#ef5b00"), ("White", "#ffffff"), ("Steel", "#454545")],
         fonts=["Onest · display", "Inter Tight · text"],
@@ -91,7 +93,7 @@ CASES = [
         hero=dict(img="hengtai-raytech-1.webp", alt="Hengtai Raytech website hero: Capability, owned. over a blue duotone Earth with a satellite in orbit"),
         facts=[("Client", "Hengtai Raytech"),
                ("Sector", "Defence technology: SAR surveillance, satellites, robotics"),
-               ("Scope", "Brand identity, visual system, website"),
+               ("Scope", "Logo and identity, brand guidelines, print and collateral, website design and build"),
                ("Live", ext("https://hengtairaytech.com"))],
         sections=[
             ("The brief", """<p>Hengtai Raytech began as an equipment supplier and has <span class="hl">repositioned as an original manufacturer</span>, building inside Nigeria's defence industrial ecosystem. It makes MiniSAR radar payloads for drones, the SmartSat-X satellite payload, and the X30 and M20 ground robots.</p>
@@ -101,6 +103,7 @@ CASES = [
             ("Palette &amp; type", "PALETTE"),
             ("Voice", """<blockquote>Capability, owned.</blockquote>
 <p>Short and certain, built around ownership: <span class="hl">“Build here. Keep it here.”</span>, <span class="hl">“Built for the terrain. Built to stay.”</span> and <span class="hl">“Intelligence that survives the weather.”</span></p>"""),
+            ("The result", """<p>Hengtai Raytech was already doing Tier-1 work. The overhaul gives it a brand that <span class="hl">presents it as the manufacturer it has become</span>, consistently, from the website to print.</p>"""),
         ],
         palette=[("Ink navy", "#051230"), ("Signal blue", "#0368c8"), ("Sky", "#4ea3f0"), ("Mist", "#b7cce4"), ("Blush", "#eef4fb")],
         fonts=["Stack Sans Notch · display", "Outfit · text"],
@@ -147,7 +150,7 @@ CASES = [
         facts=[("Stack", "Python · Flask · PyMuPDF4LLM · python-pptx"),
                ("AI", "Groq free tier, any OpenAI-compatible model"),
                ("Hosting", "Vercel + Backblaze B2"),
-               ("Live", ext("https://pdf-pptx-olive.vercel.app") + '<br>' + ext("https://github.com/ctoriola/pdf.pptx", "Source on GitHub"))],
+               ("Live", ext("https://pdf-pptx-olive.vercel.app"))],
         sections=[
             ("The problem", """<p>Turning a PDF into a presentation is usually copy, paste, resize, repeat. Converters that exist tend to dump each page onto a slide, or lose the structure: chapter titles, numbered steps, tables and the pictures that go with them.</p>"""),
             ("How it works", """<p>It <span class="hl">reads the document first</span>. A brochure becomes product slides with prices and specs; a handbook becomes chapters, steps and quizzes; a report keeps its tables.</p>
@@ -249,6 +252,10 @@ CASES = [
     ),
 ]
 
+CODE = {"fipco": "fipconew", "primetek-ssc": "ptkweb", "hengtai-raytech": "hengtai", "pitchperfectai": "synoptic-webapp",
+        "pdf-to-slides": "pdf.pptx", "vatclear": "taxapp", "lyrics-to-easyworship": "ewschedule", "ncrypt": "ncrypt2",
+        "school-management": "wepluzsms"}
+
 ORDER = [c["slug"] for c in CASES]
 BY = {c["slug"]: c for c in CASES}
 
@@ -275,7 +282,11 @@ def section_body(c, body):
 def page(c):
     i = ORDER.index(c["slug"])
     nxt = BY[ORDER[(i + 1) % len(ORDER)]]
-    facts = "\n".join('      <div><dt>%s</dt><dd>%s</dd></div>' % f for f in c["facts"])
+    fl = list(c["facts"])
+    repo = "https://github.com/ctoriola/" + CODE[c["slug"]]
+    if repo not in fl[-1][1]:
+        fl[-1] = (fl[-1][0], fl[-1][1] + "<br>" + ext(repo, "Source on GitHub"))
+    facts = "\n".join('      <div><dt>%s</dt><dd>%s</dd></div>' % f for f in fl)
     secs = []
     for k, (h2, body) in enumerate(c["sections"]):
         secs.append('    <section class="case-sec">\n      <h2><small>%02d</small>%s</h2>\n      <div>\n%s\n      </div>\n    </section>' % (k + 1, h2, section_body(c, body)))
