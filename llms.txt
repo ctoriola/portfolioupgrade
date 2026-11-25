@@ -29,5 +29,5 @@ Contact: toriola333@gmail.com · +234 816 629 5770 · https://www.charlestoriola
 - [PDF to Slides](https://www.charlestoriola.com/work/pdf-to-slides): PDF to Slides turns reports, brochures and textbooks into PowerPoint decks. By Charles Toriola.
 - [PitchPerfectAI](https://www.charlestoriola.com/work/pitchperfectai): PitchPerfectAI turns an idea or a GitHub repo into an investor pitch deck, with an AI coach. Built solo by Charles Toriola.
 - [PrimeTEK SSC brand overhaul](https://www.charlestoriola.com/work/primetek-ssc): a complete brand overhaul for PrimeTEK Safety & Security Consultants, by Charles Toriola.
-- [Wepluz School Manager](https://www.charlestoriola.com/work/school-management): Wepluz School Manager, the overhaul of a PHP school management system used in 100+ schools. By Charles Toriola.
+- [Wepluz School Manager](https://www.charlestoriola.com/work/school-management): Wepluz School Manager, a solo overhaul of the PHP and MySQL school management system Charles Toriola ran for 100+ schools.
 - [VATClear](https://www.charlestoriola.com/work/vatclear): VATClear, invoices, expenses and VAT for Nigerian SMEs. By Charles Toriola.
