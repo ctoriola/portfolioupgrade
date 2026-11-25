@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from seo_meta import BASE, PERSON_ID, jsonld
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
-V = "202611251715"
+V = "202611251800"
 DRAW_V = "202611061439"
 EXT = '<span data-px="ext" data-scale="1.2" data-ink="#2f5bff"></span>'
 
