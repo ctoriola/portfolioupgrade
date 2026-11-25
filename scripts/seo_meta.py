@@ -11,6 +11,7 @@ SERVICE_ID = BASE + "/#service"
 WEBSITE_ID = BASE + "/#website"
 
 ROLES = [
+    "Design Engineer",
     "Full Stack Developer",
     "Freelance Developer",
     "Creative Lead",
@@ -20,7 +21,7 @@ ROLES = [
 ]
 
 KNOWS = [
-    "Full stack web development", "Web app development", "Graphic design", "Brand identity design",
+    "Design engineering", "Full stack web development", "Web app development", "Graphic design", "Brand identity design",
     "Poster design", "Videography", "Event films", "Video editing", "Colour grading", "Motion graphics",
     "Multimedia production", "Livestream production",
     "PHP", "MySQL", "Python", "Flask", "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
@@ -51,8 +52,8 @@ PERSON = {
     "familyName": "Toriola",
     "url": BASE + "/",
     "image": BASE + "/assets/img/photos/charles-studio.webp",
-    "jobTitle": "Full Stack Developer & Creative Lead",
-    "description": "Abuja-based full stack developer, creative lead, graphic designer, videographer and multimedia specialist, available for freelance work.",
+    "jobTitle": "Design Engineer & Creative Lead",
+    "description": "Abuja-based design engineer and creative lead: full stack developer, graphic designer, videographer and multimedia specialist, available for freelance work.",
     "hasOccupation": [{"@type": "Occupation", "name": r, "occupationLocation": ABUJA} for r in ROLES],
     "worksFor": {"@type": "Organization", "name": "PrimeTEK Group"},
     "homeLocation": ABUJA,
