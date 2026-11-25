@@ -15,7 +15,7 @@ OG = BASE + "/assets/img/og.jpg"
 PAGES = {
     "index.html": dict(
         path="/", og_type="profile",
-        title="Charles Toriola — Developer, Graphic Designer & Videographer, Abuja",
+        title="Charles Toriola — Full Stack Developer & Designer in Abuja",
         desc="Charles Toriola is a full stack developer, creative lead, graphic designer and videographer in Abuja, Nigeria. Web apps, brand identity, event films and live production, from one person.",
         graph=[WEBSITE, PERSON, SERVICE]),
     "studio.html": dict(
